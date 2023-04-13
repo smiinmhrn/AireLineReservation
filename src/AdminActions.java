@@ -1,4 +1,4 @@
-public class AdminActions extends User{
+public class AdminActions extends User {
     private CanAdminActions adminActions;
     public AdminActions(CanAdminActions adminActions) {
         this.adminActions = adminActions;
@@ -15,7 +15,7 @@ public class AdminActions extends User{
     public void printSingleAirline(int index) {
         adminActions.printSingleAirLine(index);
     }
-    public int searchByFlightID(String shouldSearch) {
+    public int searchByFlightId(String shouldSearch) {
         return adminActions.searchByFlightId(shouldSearch);
     }
     public void updatingOrigin(String shouldUpdateWith , int index) {
