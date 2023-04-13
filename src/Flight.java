@@ -1,16 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
-public class Flight {
+public class Flight implements CanAdminActions {
     // this class is responsible for doing some actions in airline list
     private static final List<Flights> AIR_LINE_LIST = new ArrayList<>();
     // this function is for adding new airline
-
+    @Override
     public void addAirlines(Flights flights) { AIR_LINE_LIST.add(flights); }
     // this function is for removing new airline
+    @Override
     public void removeAirLine(int index){
         AIR_LINE_LIST.remove(index);
     }
     // this function is for searching flight id and return the index of its address and if it dost exist return -1
+    @Override
     public int searchByFlightId(String shouldSearch) {
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) {
             if (AIR_LINE_LIST.get(i).getFlightId().equals(shouldSearch.toUpperCase())) return i;
@@ -83,26 +85,34 @@ public class Flight {
         return AIR_LINE_LIST.get(index).getSeats();
     }
     // these next 7 functions get a string which should replace and get an index of an address that should update
+    @Override
     public void updateFlightId(String toUpdate , int index){ AIR_LINE_LIST.get(index).setFlightId(toUpdate); }
+    @Override
     public void updateOrigin(String toUpdate , int index){
         AIR_LINE_LIST.get(index).setOrigin(toUpdate);
     }
+    @Override
     public void updateDestination(String toUpdate , int index){
         AIR_LINE_LIST.get(index).setDestination(toUpdate);
     }
+    @Override
     public void updateDate(String toUpdate , int index){
         AIR_LINE_LIST.get(index).setDate(toUpdate);
     }
+    @Override
     public void updateTime(String toUpdate , int index){
         AIR_LINE_LIST.get(index).setTime(toUpdate);
     }
+    @Override
     public void updatePrice(String toUpdate , int index){
         AIR_LINE_LIST.get(index).setPrice(toUpdate);
     }
+    @Override
     public void updateSeats(String toUpdate , int index){
         AIR_LINE_LIST.get(index).setSeats(toUpdate);
     }
     // this function is for print all airlines
+    @Override
     public void printSingleAirLine(int index) {
         System.out.printf("| %-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s ",
                 AIR_LINE_LIST.get(index).getFlightId() , AIR_LINE_LIST.get(index).getOrigin() ,
@@ -111,6 +121,7 @@ public class Flight {
         System.out.print("\n");
     }
     // this function is for print a single airline
+    @Override
     public void printAllAirLine(){
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) printSingleAirLine(i);
     }
