@@ -1,2 +1,2 @@
-public class AdminActions {
+public class AdminActions extends User{
 }

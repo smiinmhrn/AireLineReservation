@@ -1,2 +1,2 @@
-public class PassengerAction {
+public class PassengerAction extends User{
 }
