@@ -18,6 +18,9 @@ public class AdminActions extends User {
     public int searchByFlightId(String shouldSearch) {
         return adminActions.searchByFlightId(shouldSearch);
     }
+    public void updatingFLightId(String shouldUpdateWith , int index) {
+        adminActions.updateFlightId(shouldUpdateWith , index);
+    }
     public void updatingOrigin(String shouldUpdateWith , int index) {
         adminActions.updateOrigin(shouldUpdateWith , index);
     }

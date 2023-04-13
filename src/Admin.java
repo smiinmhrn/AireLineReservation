@@ -27,6 +27,7 @@ public class Admin {
                     add();
                     break label;
                 case "2" :
+                    update();
                     break label;
                 case "3" :
                     remove();
@@ -98,4 +99,105 @@ public class Admin {
             } else break;
         } return id;
     }
+    // this function and next function are for updating an airline
+    private void update() {
+
+        System.out.println(Appearance.BLUE + "[ UPDATING PANEL ]" + Appearance.RESET_COLOR);
+        ADMIN_ACTIONS.printAllAirlines();
+
+        System.out.println(Appearance.TEXT_ITALIC + "Type the Flight id you want to update :" + Appearance.RESET_STYLE);
+
+        String flight = existsFlightId(input.next());
+        updateInProgress(ADMIN_ACTIONS.searchByFlightId(flight));
+
+//        if (MAIN_MENU.backToMenu("Admin" , "Updating").equals("1")) adminMenu();
+//        else update();
+    }
+    /**
+     * @param result => in previous function admin search for a flight id which he/she wanted to update and search
+     *               for this id and save the index of it . this function use this index to show that single airline
+     *               and update that special airline
+     */
+    private void updateInProgress(int result) {
+
+        ADMIN_ACTIONS.printSingleAirline(result);
+
+        System.out.println(Appearance.TEXT_ITALIC + """
+            Which statement you want to change :
+            1. FlightId   2. Origin   3. Distinction   4. Date   5. Time   6. Price   7. Seats\s""" );
+
+        String choice = input.next();
+        label :
+        while (true) {
+            switch (TEMPLATE.availableInput(choice)) {
+
+                case "1" :
+                    System.out.println("Enter your new Flight Id :");
+                    String id = input.next().toUpperCase();
+                    while (true) {
+                        if (ADMIN_ACTIONS.searchByFlightId(id) != -1) {
+                            System.out.println(Appearance.RED + "This Flight id dos exist! Try again :" + Appearance.RESET_COLOR);
+                            id = input.next().toUpperCase();
+                        } else break;
+                    }
+                    ADMIN_ACTIONS.updatingFLightId(id, result);
+                    break label;
+
+                case "2" :
+                    System.out.println("Enter your new Origin :");
+                    String origin = TEMPLATE.templateStringStyle(input.next());
+
+                    ADMIN_ACTIONS.updatingOrigin(origin , result);
+                    break label;
+
+                case "3" :
+                    System.out.println("Enter your new Destination :");
+                    String destination = TEMPLATE.templateStringStyle(input.next());
+                    ADMIN_ACTIONS.updatingDestination(destination , result);
+                    break label;
+
+                case "4" :
+                    ADMIN_ACTIONS.updatingDate(TEMPLATE.dateTemplate() , result);
+                    break label;
+
+                case "5" :
+                    ADMIN_ACTIONS.updatingTime(TEMPLATE.timeTemplate() , result);
+                    break label;
+
+                case "6" :
+                    System.out.println("Enter your new Price :");
+                    ADMIN_ACTIONS.updatingPrice(TEMPLATE.availableInput(input.next()) , result);
+                    break label;
+
+                case "7" :
+                    System.out.println("Enter your new Seats :");
+                    ADMIN_ACTIONS.updatingSeats(TEMPLATE.availableInput(input.next()) , result);
+                    break label;
+
+                default :
+                    System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_COLOR);
+                    choice = input.next();
+            }
+        }
+        System.out.println(Appearance.GREEN + "Updating airline successfully !" + Appearance.RESET_COLOR);
+        System.out.println("""
+            1. Keep updating this airline
+            2. Skip\s""" );
+
+        String secondChoice = input.next();
+        label :
+        while (true) {
+            switch (TEMPLATE.availableInput(secondChoice)) {
+                case "1":
+                    updateInProgress(result);
+                    break label ;
+                case "2" :
+                    break label;
+                default :
+                    System.out.println(Appearance.RED + "Wrong command! Try again :"+ Appearance.RESET_COLOR + Appearance.RESET_STYLE);
+                    secondChoice = input.next();
+            }
+        }
+    }
+    
 }
