@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class User {
     // this class is responsible for every action related to users accounts
     private static final List<Users> USERS_LIST = new ArrayList<>();
