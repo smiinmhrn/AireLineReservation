@@ -16,4 +16,7 @@ public class Template {
         }
         return choice;
     }
+    public String templateStringStyle(String inputSearch) {
+        return inputSearch.substring(0,1).toUpperCase() + inputSearch.substring(1).toLowerCase();
+    }
 }

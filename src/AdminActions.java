@@ -18,22 +18,22 @@ public class AdminActions extends User{
     public int searchByFlightID(String shouldSearch) {
         return adminActions.searchByFlightId(shouldSearch);
     }
-    public void updatingOrigin(String shouldUpdateWit , int index) {
-        adminActions.updateOrigin(shouldUpdateWit , index);
+    public void updatingOrigin(String shouldUpdateWith , int index) {
+        adminActions.updateOrigin(shouldUpdateWith , index);
     }
-    public void updatingDestination(String shouldUpdateWit , int index) {
-        adminActions.updateDestination(shouldUpdateWit , index);
+    public void updatingDestination(String shouldUpdateWith , int index) {
+        adminActions.updateDestination(shouldUpdateWith , index);
     }
-    public void updatingDate(String shouldUpdateWit , int index) {
-        adminActions.updateDate(shouldUpdateWit , index);
+    public void updatingDate(String shouldUpdateWith , int index) {
+        adminActions.updateDate(shouldUpdateWith , index);
     }
-    public void updatingTime(String shouldUpdateWit , int index) {
-        adminActions.updateTime(shouldUpdateWit , index);
+    public void updatingTime(String shouldUpdateWith , int index) {
+        adminActions.updateTime(shouldUpdateWith , index);
     }
-    public void updatingPrice(String shouldUpdateWit , int index) {
-        adminActions.updatePrice(shouldUpdateWit , index);
+    public void updatingPrice(String shouldUpdateWith , int index) {
+        adminActions.updatePrice(shouldUpdateWith , index);
     }
-    public void updatingSeats(String shouldUpdateWit , int index) {
-        adminActions.updateSeats(shouldUpdateWit , index);
+    public void updatingSeats(String shouldUpdateWith , int index) {
+        adminActions.updateSeats(shouldUpdateWith , index);
     }
 }
