@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-public class Flight implements CanAdminActions {
+public class Flight implements CanAdminActions , CanPassengerActions{
     // this class is responsible for doing some actions in airline list
     private static final List<Flights> AIR_LINE_LIST = new ArrayList<>();
     // this function is for adding new airline
@@ -20,6 +20,7 @@ public class Flight implements CanAdminActions {
     }
     // this function and 4 next functions is searching origin , destination , date , time , price and seat
     // and return 1 if it exists and return 0 if it not
+    @Override
     public int searchByOrigin(String shouldSearch) {
         int result = 0;
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) {
@@ -30,6 +31,7 @@ public class Flight implements CanAdminActions {
             }
         } return result;
     }
+    @Override
     public int searchByDestination(String shouldSearch) {
         int result = 0;
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) {
@@ -40,6 +42,7 @@ public class Flight implements CanAdminActions {
             }
         } return result;
     }
+    @Override
     public int searchByDate(String shouldSearch) {
         int result = 0;
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) {
@@ -49,6 +52,7 @@ public class Flight implements CanAdminActions {
             }
         } return result;
     }
+    @Override
     public int searchByTime(String shouldSearch) {
         int result = 0;
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) {
@@ -58,6 +62,7 @@ public class Flight implements CanAdminActions {
             }
         } return result;
     }
+    @Override
     public int searchByPrice(int lower , int upper) {
         int result = 0;
         for (int i = 7; i < AIR_LINE_LIST.size(); i++) {
@@ -68,6 +73,7 @@ public class Flight implements CanAdminActions {
             }
         } return result;
     }
+    @Override
     public int searchBySeats(String shouldSearch) {
         int result = 0;
         for (int i = 0; i < AIR_LINE_LIST.size(); i++) {
@@ -78,9 +84,11 @@ public class Flight implements CanAdminActions {
         } return result;
     }
     // getPrice and getSeats get the index of address and return the value of price and seat
+    @Override
     public String getPrice(int index){
         return AIR_LINE_LIST.get(index).getPrice();
     }
+    @Override
     public String getSeats(int index){
         return AIR_LINE_LIST.get(index).getSeats();
     }
