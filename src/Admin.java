@@ -33,6 +33,7 @@ public class Admin {
                     remove();
                     break label;
                 case "4" :
+                    showingFlightSchedules();
                     break label;
                 case "0" :
                     break label;
@@ -199,5 +200,11 @@ public class Admin {
             }
         }
     }
-    
+    // this function is for showing all airlines
+    private void showingFlightSchedules() {
+        System.out.println(Appearance.BLUE + " [ AIRLINE SCHEDULES ] " + Appearance.RESET_COLOR);
+        ADMIN_ACTIONS.printAllAirlines();
+//        if (MAIN_MENU.backToMenu("Admin" , "Showing airline list").equals("1")) adminMenu();
+//        else flightSchedules();
+    }
 }
