@@ -3,8 +3,10 @@ import java.util.Scanner;
 public class Admin {
     Scanner input = new Scanner(System.in);
     private final Template TEMPLATE;
-    public Admin(Template TEMPLATE) {
+    private final AdminActions ADMIN_ACTIONS;
+    public Admin(Template TEMPLATE, AdminActions ADMIN_ACTIONS) {
         this.TEMPLATE = TEMPLATE;
+        this.ADMIN_ACTIONS = ADMIN_ACTIONS;
     }
     // this function is for handling admin menu
     public void adminMenu() {
@@ -37,4 +39,5 @@ public class Admin {
             }
         }
     }
+
 }
