@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import appearance.Appearance;
 public class MainMenu {
     Scanner input = new Scanner(System.in);
     private final Template TEMPLATE;

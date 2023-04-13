@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import appearance.Appearance;
 public class Template {
     Scanner input = new Scanner(System.in);
     // check if inputs are numbers not anything else
