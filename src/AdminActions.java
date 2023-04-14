@@ -39,4 +39,13 @@ public class AdminActions extends User {
     public void updatingSeats(String shouldUpdateWith , int index) {
         adminActions.updateSeats(shouldUpdateWith , index);
     }
+    public void addAdminAccount(Users users) {
+        addAccount(users);
+    }
+    public int searchAdminName(String username) {
+        return searchUsername(username);
+    }
+    public boolean searchAdminPassword(String password) {
+        return searchPassword(password);
+    }
 }

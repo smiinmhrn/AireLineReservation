@@ -19,7 +19,7 @@ public class User {
         } return false;
     }
     // this function is use for adding new account
-    public void addAccount(Users accountElements) { USERS_LIST.add(accountElements); }
+    public void addAccount(Users users) { USERS_LIST.add(users); }
     // use for changing password
     public void changePass(int index , String newPass) { USERS_LIST.get(index).setPassword(newPass); }
 }
