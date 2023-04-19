@@ -1,12 +1,14 @@
-public class PassengerActions extends User{
+public class PassengerActions {
     private CanPassengerActions passengerActions;
+    private CanPassengerUser canPassengerUser;
     private Ticket ticket;
-    public PassengerActions(CanPassengerActions passengerActions, Ticket ticket) {
+    public PassengerActions(CanPassengerActions passengerActions, CanPassengerUser canPassengerUser, Ticket ticket) {
         this.passengerActions = passengerActions;
+        this.canPassengerUser = canPassengerUser;
         this.ticket = ticket;
     }
     public void changPassword(String username, String newPassword) {
-        changePass(username,newPassword);
+        canPassengerUser.changePass(username,newPassword);
     }
     public void searchByFlightId(String shouldSearch) {
         int index = passengerActions.searchByFlightId(shouldSearch);
@@ -49,7 +51,7 @@ public class PassengerActions extends User{
         return passengerActions.getPrice(index);
     }
     public boolean isPriceEnough(String username, int index) {
-        return isEnough(getPrice(index), username);
+        return canPassengerUser.isEnough(getPrice(index), username);
     }
     public String creatingTicketId(String username, String flightId) {
         return ticket.creatTicketId(username,flightId);
@@ -64,15 +66,18 @@ public class PassengerActions extends User{
         ticket.ticketCancellation(ticket.searchTicketByHavingTicketId(username,ticketId));
     }
     public void addCharge(String username, String chargeAmount) {
-        increaseCharge(username, chargeAmount);
+        canPassengerUser.increaseCharge(username, chargeAmount);
     }
     public boolean availableSeat(int index) {
         return passengerActions.availableSeats(index);
     }
-    public void increaseSeat(int index) {
+    private void increaseSeat(int index) {
         passengerActions.increaseSeats(index);
     }
-    public void decreaseSeat(int index) {
+    private void decreaseSeat(int index) {
         passengerActions.decreaseSeats(index);
+    }
+    private void decreaseCharges(String username , String chargeAmount) {
+        canPassengerUser.decreaseCharge(username,chargeAmount);
     }
 }

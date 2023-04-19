@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-public class User {
+public class User implements CanPassengerUser {
     // this class is responsible for every action related to users accounts
     private static final List<Users> USERS_LIST = new ArrayList<>();
     /**
@@ -19,6 +19,7 @@ public class User {
     // this function is use for adding new account
     public void addAccount(Users users) { USERS_LIST.add(users); }
     // use for changing password
+    @Override
     public void changePass(String username , String newPass) {
         searchUsername(username).setPassword(newPass);
     }
@@ -26,14 +27,17 @@ public class User {
         return searchUsername(username).getCharge();
     }
     // return a boolean that shows if charge is enough for buying tickets or not
+    @Override
     public boolean isEnough(String shouldPay , String username){
         return Long.parseLong(getCharge(username)) >= Long.parseLong(shouldPay);
     }
+    @Override
     public void increaseCharge(String username , String chargeAmount) {
         String oldCharge = searchUsername(username).getCharge();
         long newCharge = Long.parseLong(oldCharge) + Long.parseLong(chargeAmount);
         searchUsername(username).setCharge(String.valueOf(newCharge));
     }
+    @Override
     public void decreaseCharge(String username , String chargeAmount) {
         String oldCharge = searchUsername(username).getCharge();
         long newCharge = Long.parseLong(oldCharge) - Long.parseLong(chargeAmount);

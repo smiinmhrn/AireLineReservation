@@ -1,4 +1,4 @@
-public class AdminActions extends User {
+public class AdminActions {
     private CanAdminActions adminActions;
     public AdminActions(CanAdminActions adminActions) {
         this.adminActions = adminActions;
@@ -39,13 +39,13 @@ public class AdminActions extends User {
     public void updatingSeats(String shouldUpdateWith , int index) {
         adminActions.updateSeats(shouldUpdateWith , index);
     }
-    public void addAdminAccount(Users users) {
-        addAccount(users);
-    }
-    public Users searchAdminName(String username) {
-        return searchUsername(username);
-    }
-    public boolean searchAdminPassword(String password , String username) {
-        return searchPassword(password , username);
-    }
+//    public void addAdminAccount(Users users) {
+//        addAccount(users);
+//    }
+//    public Users searchAdminName(String username) {
+//        return searchUsername(username);
+//    }
+//    public boolean searchAdminPassword(String password , String username) {
+//        return searchPassword(password , username);
+//    }
 }

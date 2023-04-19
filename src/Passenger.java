@@ -2,9 +2,15 @@ import appearance.Appearance;
 import java.util.Scanner;
 public class Passenger {
     Scanner input = new Scanner(System.in);
+    private String username;
+    private String password;
     private final Template TEMPLATE;
-    public Passenger(Template TEMPLATE) {
+    private final PassengerActions passengerActions;
+    public Passenger(String username, String password, Template TEMPLATE, PassengerActions passengerActions) {
+        this.username = username;
+        this.password = password;
         this.TEMPLATE = TEMPLATE;
+        this.passengerActions = passengerActions;
     }
     public void passengerMenu() {
 
@@ -36,6 +42,8 @@ public class Passenger {
                 case "6":
                     break label;
                 case "0":
+                    var mainMenu = new MainMenu(new Template());
+                    mainMenu.mainMenu();
                     break label;
                 default:
                     System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_COLOR);

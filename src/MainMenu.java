@@ -22,6 +22,8 @@ public class MainMenu {
                     signInAs();
                     break label;
                 case "2" :
+                    var register = new RegisterMenu(new Register());
+                    register.passengerSignUp();
                     break label;
                 default:
                     System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_COLOR);
@@ -38,14 +40,15 @@ public class MainMenu {
             Choose :\s""" );
 
         String choice = input.next();
+        var register = new RegisterMenu(new Register());
         label :
         while (true){
             switch (TEMPLATE.availableInput(choice)){
                 case "1":
-                    var adminSignIn = new Admin(new Template(), new AdminActions(new Flight()));
-                    adminSignIn.adminSighIn();
+                    register.adminSighIn();
                     break label;
                 case "2":
+                    register.passengerSighIn();
                     break label;
                 default:
                     System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_STYLE + Appearance.RESET_COLOR);

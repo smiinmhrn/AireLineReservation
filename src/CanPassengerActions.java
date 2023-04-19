@@ -12,4 +12,5 @@ public interface CanPassengerActions {
     boolean availableSeats(int index);
     void increaseSeats(int index);
     void decreaseSeats(int index);
+
 }
