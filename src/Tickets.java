@@ -1,28 +1,19 @@
 public class Tickets {
-    private String username;
-    private String flightId;
-    private String ticketId;
+    private final String USERNAME;
+    private final String FLIGHT_ID;
+    private final String TICKET_ID;
     public Tickets(String username, String flightId, String ticketId) {
-        this.username = username;
-        this.flightId = flightId;
-        this.ticketId = ticketId;
+        this.USERNAME = username;
+        this.FLIGHT_ID = flightId;
+        this.TICKET_ID = ticketId;
     }
-    public String getUsername() {
-        return username;
+    public String getUSERNAME() {
+        return USERNAME;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public String getFLIGHT_ID() {
+        return FLIGHT_ID;
     }
-    public String getFlightId() {
-        return flightId;
-    }
-    public void setFlightId(String flightId) {
-        this.flightId = flightId;
-    }
-    public String getTicketId() {
-        return ticketId;
-    }
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId;
+    public String getTICKET_ID() {
+        return TICKET_ID;
     }
 }

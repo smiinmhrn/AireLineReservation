@@ -2,9 +2,9 @@ import appearance.Appearance;
 import java.util.Scanner;
 public class Admin {
     Scanner input = new Scanner(System.in);
-    private final Template TEMPLATE;
+    private final Templates TEMPLATE;
     private final AdminActions ADMIN_ACTIONS;
-    public Admin(Template TEMPLATE, AdminActions ADMIN_ACTIONS) {
+    public Admin(Templates TEMPLATE, AdminActions ADMIN_ACTIONS) {
         this.TEMPLATE = TEMPLATE;
         this.ADMIN_ACTIONS = ADMIN_ACTIONS;
     }
@@ -36,7 +36,7 @@ public class Admin {
                     showingFlightSchedules();
                     break label;
                 case "0" :
-                    var mainMenu = new MainMenu(new Template());
+                    var mainMenu = new MainMenu(new Templates());
                     mainMenu.mainMenu();
                     break label;
                 default :
@@ -209,38 +209,4 @@ public class Admin {
         if (TEMPLATE.backToMenu("Admin" , "Showing airline list").equals("1")) adminMenu();
         else showingFlightSchedules();
     }
-//    public void adminSighIn() {
-//
-//        ADMIN_ACTIONS.addAdminAccount(new Users("samin" , "samin228" , "0"));
-//        System.out.println(Appearance.BLUE + "[ ADMIN SIGN IN PANEL ]" + Appearance.RESET_COLOR);
-//        System.out.println(Appearance.TEXT_ITALIC + "Enter your username :"  + Appearance.RESET_STYLE );
-//        String username = input.next();
-//
-//        while (true) {
-//            if (ADMIN_ACTIONS.searchAdminName(username) != null) {
-//                break;
-//            }else {
-//                System.out.println(Appearance.RED + "Wrong username! Try again :" + Appearance.RESET_COLOR);
-//                username = input.next();
-//            }
-//        }
-//
-//        System.out.println(Appearance.TEXT_ITALIC + "Enter your password :"  + Appearance.RESET_STYLE );
-//        String password = input.next();
-//        while (true){
-//            if (ADMIN_ACTIONS.searchAdminPassword(password , "samin")){
-//                adminMenu();
-//                break;
-//            }else {
-//                System.out.println(Appearance.RED + "Wrong password! Try again :"+ Appearance.RESET_COLOR);
-//                password = input.next();
-//            }
-//        }
-//    }
-    /**
-     * this function is for when you want to back to first menu
-     * @param action => and your action in others functions
-     * @return => has two options, and you can choose one of them and your choice will return to be considered
-     */
-
 }

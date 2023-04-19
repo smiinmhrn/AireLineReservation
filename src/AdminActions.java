@@ -1,51 +1,42 @@
 public class AdminActions {
-    private CanAdminActions adminActions;
+    private final CanAdminActions ADMIN_ACTIONS;
     public AdminActions(CanAdminActions adminActions) {
-        this.adminActions = adminActions;
+        this.ADMIN_ACTIONS = adminActions;
     }
     public void addNewAirline(Flights flights) {
-        adminActions.addAirlines(flights);
+        ADMIN_ACTIONS.addAirlines(flights);
     }
     public void removeAirline(int index) {
-        adminActions.removeAirLine(index);
+        ADMIN_ACTIONS.removeAirLine(index);
     }
     public void printAllAirlines() {
-        adminActions.printAllAirLine();
+        ADMIN_ACTIONS.printAllAirLine();
     }
     public void printSingleAirline(int index) {
-        adminActions.printSingleAirLine(index);
+        ADMIN_ACTIONS.printSingleAirLine(index);
     }
     public int searchByFlightId(String shouldSearch) {
-        return adminActions.searchByFlightId(shouldSearch);
+        return ADMIN_ACTIONS.searchByFlightId(shouldSearch);
     }
     public void updatingFLightId(String shouldUpdateWith , int index) {
-        adminActions.updateFlightId(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updateFlightId(shouldUpdateWith , index);
     }
     public void updatingOrigin(String shouldUpdateWith , int index) {
-        adminActions.updateOrigin(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updateOrigin(shouldUpdateWith , index);
     }
     public void updatingDestination(String shouldUpdateWith , int index) {
-        adminActions.updateDestination(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updateDestination(shouldUpdateWith , index);
     }
     public void updatingDate(String shouldUpdateWith , int index) {
-        adminActions.updateDate(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updateDate(shouldUpdateWith , index);
     }
     public void updatingTime(String shouldUpdateWith , int index) {
-        adminActions.updateTime(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updateTime(shouldUpdateWith , index);
     }
     public void updatingPrice(String shouldUpdateWith , int index) {
-        adminActions.updatePrice(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updatePrice(shouldUpdateWith , index);
     }
     public void updatingSeats(String shouldUpdateWith , int index) {
-        adminActions.updateSeats(shouldUpdateWith , index);
+        ADMIN_ACTIONS.updateSeats(shouldUpdateWith , index);
     }
-//    public void addAdminAccount(Users users) {
-//        addAccount(users);
-//    }
-//    public Users searchAdminName(String username) {
-//        return searchUsername(username);
-//    }
-//    public boolean searchAdminPassword(String password , String username) {
-//        return searchPassword(password , username);
-//    }
 }

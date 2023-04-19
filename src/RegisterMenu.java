@@ -26,7 +26,7 @@ public class RegisterMenu {
         String password = input.next();
         while (true){
             if (REGISTER.searchAdminPassword(password , "samin")){
-                var admin = new Admin(new Template(),new AdminActions(new Flight()));
+                var admin = new Admin(new Templates(),new AdminActions(new Flight()));
                 admin.adminMenu();
                 break;
             }else {
@@ -51,7 +51,7 @@ public class RegisterMenu {
         String password = input.next();
         REGISTER.addPassengerAccount(new Users(username,password,"0"));
         var passenger = new Passenger(username,
-                new Template(),new PassengerActions(new Flight(),new User(),new Ticket()));
+                new Templates(),new PassengerActions(new Flight(),new User(),new Ticket()));
         passenger.passengerMenu();
     }
     public void passengerSighIn() {
@@ -72,7 +72,7 @@ public class RegisterMenu {
         while (true){
             if (REGISTER.searchPassengerPassword(password,username)){
                 var passenger = new Passenger(username,
-                        new Template(),new PassengerActions(new Flight(),new User(),new Ticket()));
+                        new Templates(),new PassengerActions(new Flight(),new User(),new Ticket()));
                 passenger.passengerMenu();
                 break;
             }

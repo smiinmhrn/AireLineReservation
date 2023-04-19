@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Passenger {
     Scanner input = new Scanner(System.in);
     private final String USERNAME;
-    private final Template TEMPLATE;
+    private final Templates TEMPLATE;
     private final PassengerActions passengerActions;
-    public Passenger(String username, Template TEMPLATE, PassengerActions passengerActions) {
+    public Passenger(String username, Templates TEMPLATE, PassengerActions passengerActions) {
         this.USERNAME = username;
         this.TEMPLATE = TEMPLATE;
         this.passengerActions = passengerActions;
@@ -46,7 +46,7 @@ public class Passenger {
                     addCharge(1);
                     break label;
                 case "0":
-                    var mainMenu = new MainMenu(new Template());
+                    var mainMenu = new MainMenu(new Templates());
                     mainMenu.mainMenu();
                     break label;
                 default:
@@ -112,7 +112,7 @@ public class Passenger {
                         System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
                 default:
-                    System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RED);
+                    System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_COLOR);
                     choice = input.next();
             }
         }

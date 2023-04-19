@@ -1,93 +1,93 @@
 public class PassengerActions {
-    private CanPassengerActions passengerActions;
-    private CanPassengerUser canPassengerUser;
-    private Ticket ticket;
+    private final CanPassengerActions PASSENGER_ACTIONS;
+    private final CanPassengerUser PASSENGER_USER;
+    private final Ticket TICKET;
     public PassengerActions(CanPassengerActions passengerActions, CanPassengerUser canPassengerUser, Ticket ticket) {
-        this.passengerActions = passengerActions;
-        this.canPassengerUser = canPassengerUser;
-        this.ticket = ticket;
+        this.PASSENGER_ACTIONS = passengerActions;
+        this.PASSENGER_USER = canPassengerUser;
+        this.TICKET = ticket;
     }
     public void changPassword(String username, String newPassword) {
-        canPassengerUser.changePass(username,newPassword);
+        PASSENGER_USER.changePass(username,newPassword);
     }
     public boolean searchByFlightId(String shouldSearch) {
-        int index = passengerActions.searchByFlightId(shouldSearch);
+        int index = PASSENGER_ACTIONS.searchByFlightId(shouldSearch);
         if (index != -1){
             printSingleLine(index);
             return true;
         }return false;
     }
     public boolean searchByOrigin(String shouldSearch) {
-        int index = passengerActions.searchByOrigin(shouldSearch);
+        int index = PASSENGER_ACTIONS.searchByOrigin(shouldSearch);
         return index == 0;
     }
     public boolean searchByDestination(String shouldSearch) {
-        int index = passengerActions.searchByDestination(shouldSearch);
+        int index = PASSENGER_ACTIONS.searchByDestination(shouldSearch);
         return index == 0;
     }
     public boolean searchByDate(String shouldSearch) {
-        int index = passengerActions.searchByDate(shouldSearch);
+        int index = PASSENGER_ACTIONS.searchByDate(shouldSearch);
         return index == 0;
     }
     public boolean searchByTime(String shouldSearch) {
-        int index = passengerActions.searchByTime(shouldSearch);
+        int index = PASSENGER_ACTIONS.searchByTime(shouldSearch);
         return index == 0;
     }
     public boolean searchByPrice(int lower, int upper) {
-        int index = passengerActions.searchByPrice(lower, upper);
+        int index = PASSENGER_ACTIONS.searchByPrice(lower, upper);
         return index == 0;
     }
     public boolean searchBySeats(String shouldSearch) {
-        int index = passengerActions.searchBySeats(shouldSearch);
+        int index = PASSENGER_ACTIONS.searchBySeats(shouldSearch);
         return index == 0;
     }
     public void printAllLines() {
-        passengerActions.printAllAirLine();
+        PASSENGER_ACTIONS.printAllAirLine();
     }
     public void printSingleLine(int index) {
-        passengerActions.printSingleAirLine(index);
+        PASSENGER_ACTIONS.printSingleAirLine(index);
     }
     public int existFlightId(String shouldSearch) {
-        return passengerActions.searchByFlightId(shouldSearch);
+        return PASSENGER_ACTIONS.searchByFlightId(shouldSearch);
     }
     public int getIndexOfFlightId(String username, String ticketId){
-        return existFlightId(ticket.getFlightIdByHavingTicketId(username,ticketId));
+        return existFlightId(TICKET.getFlightIdByHavingTicketId(username,ticketId));
     }
     public String getPrice(int index) {
-        return passengerActions.getPrice(index);
+        return PASSENGER_ACTIONS.getPrice(index);
     }
     public boolean isPriceEnough(String username, int index) {
-        return canPassengerUser.isEnough(getPrice(index), username);
+        return PASSENGER_USER.isEnough(getPrice(index), username);
     }
     public String creatingTicketId(String username, String flightId) {
-        return ticket.creatTicketId(username,flightId);
+        return TICKET.creatTicketId(username,flightId);
     }
     public void addNewTicket(Tickets tickets) {
-        ticket.buyNewTicket(tickets);
+        TICKET.buyNewTicket(tickets);
     }
     public void printTickets(String username) {
-        ticket.printAllUserTickets(username);
+        TICKET.printAllUserTickets(username);
     }
     public void ticketCancellation(String username, String ticketId) {
-        ticket.ticketCancellation(searchTicket(username,ticketId));
+        TICKET.ticketCancellation(searchTicket(username,ticketId));
     }
     public Tickets searchTicket(String username, String ticketId) {
-        return ticket.searchTicketByHavingTicketId(username,ticketId);
+        return TICKET.searchTicketByHavingTicketId(username,ticketId);
     }
     public void addCharge(String username, String chargeAmount) {
-        canPassengerUser.increaseCharge(username, chargeAmount);
+        PASSENGER_USER.increaseCharge(username, chargeAmount);
     }
     public boolean availableSeat(int index) {
-        return passengerActions.availableSeats(index);
+        return PASSENGER_ACTIONS.availableSeats(index);
     }
     private void increaseSeat(int index) {
-        passengerActions.increaseSeats(index);
+        PASSENGER_ACTIONS.increaseSeats(index);
     }
     private void decreaseSeat(int index) {
-        passengerActions.decreaseSeats(index);
+        PASSENGER_ACTIONS.decreaseSeats(index);
     }
     private void decreaseCharges(String username , String chargeAmount) {
-        canPassengerUser.decreaseCharge(username,chargeAmount);
+        PASSENGER_USER.decreaseCharge(username,chargeAmount);
     }
     public void booked(int index , String username) {
         decreaseSeat(index);
@@ -100,9 +100,9 @@ public class PassengerActions {
         addCharge(username,price);
     }
     public String gettingCharge(String username){
-        return canPassengerUser.getCharge(username);
+        return PASSENGER_USER.getCharge(username);
     }
     public boolean EverBooked(String username) {
-        return ticket.haveEverBooked(username);
+        return TICKET.haveEverBooked(username);
     }
 }

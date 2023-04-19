@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import appearance.Appearance;
-public class Template {
+public class Templates {
     Scanner input = new Scanner(System.in);
     // check if inputs are numbers not anything else
     public String availableInput(String choice){

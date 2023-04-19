@@ -10,14 +10,14 @@ public class Ticket {
     }
     public Tickets searchTicketByHavingTicketId(String username , String ticketId){
         for (Tickets tickets : TICKETS_LIST) {
-            if (tickets.getUsername().equals(username)) {
-                if (tickets.getTicketId().equals(ticketId)) return tickets;
+            if (tickets.getUSERNAME().equals(username)) {
+                if (tickets.getTICKET_ID().equals(ticketId)) return tickets;
             }
         }
         return null;
     }
     public String getFlightIdByHavingTicketId(String username , String ticketId){
-        return searchTicketByHavingTicketId(username,ticketId).getFlightId();
+        return searchTicketByHavingTicketId(username,ticketId).getFLIGHT_ID();
     }
     public boolean existTicketId(String username , String ticketId) {
         return searchTicketByHavingTicketId(username, ticketId) != null;
@@ -32,14 +32,14 @@ public class Ticket {
     }
     public void printAllUserTickets(String username) {
         for (Tickets tickets : TICKETS_LIST) {
-            if (tickets.getUsername().equals(username)) {
-                System.out.println(tickets.getTicketId());
+            if (tickets.getUSERNAME().equals(username)) {
+                System.out.println(tickets.getTICKET_ID());
             }
         }
     }
     public boolean haveEverBooked(String username) {
         for (Tickets tickets : TICKETS_LIST)
-            if (tickets.getUsername().equals(username)) return true;
+            if (tickets.getUSERNAME().equals(username)) return true;
         return false;
     }
 }

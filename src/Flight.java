@@ -88,9 +88,6 @@ public class Flight implements CanAdminActions , CanPassengerActions{
     public String getPrice(int index){
         return FLIGHTS_LIST.get(index).getPrice();
     }
-    public String getSeats(int index){
-        return FLIGHTS_LIST.get(index).getSeats();
-    }
     // these next 7 functions get a string which should replace and get an index of an address that should update
     @Override
     public void updateFlightId(String toUpdate , int index){ FLIGHTS_LIST.get(index).setFlightId(toUpdate); }
