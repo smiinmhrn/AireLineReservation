@@ -73,7 +73,7 @@ public class Admin {
         ADMIN_ACTIONS.addNewAirline(new Flights(flightId , origin , destination , date , time , price , seats));
         System.out.println(Appearance.GREEN + "Adding new airline successfully !" + Appearance.RESET_COLOR);
 
-        if (backToMenu("Adding").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Adding" , "Admin").equals("1")) adminMenu();
         else add();
     }
     // this function is for removing a single airline
@@ -87,7 +87,7 @@ public class Admin {
         ADMIN_ACTIONS.removeAirline(ADMIN_ACTIONS.searchByFlightId(existsFlightId(input.next())));
         System.out.println(Appearance.GREEN + "Removing airline successfully !" + Appearance.RESET_COLOR);
 
-        if (backToMenu("Removing").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Removing" , "Admin").equals("1")) adminMenu();
         else remove();
     }
     /**
@@ -113,7 +113,7 @@ public class Admin {
         String flight = existsFlightId(input.next());
         updateInProgress(ADMIN_ACTIONS.searchByFlightId(flight));
 
-        if (backToMenu("Updating").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Updating" , "Admin").equals("1")) adminMenu();
         else update();
     }
     /**
@@ -206,7 +206,7 @@ public class Admin {
     private void showingFlightSchedules() {
         System.out.println(Appearance.BLUE + " [ AIRLINE SCHEDULES ] " + Appearance.RESET_COLOR);
         ADMIN_ACTIONS.printAllAirlines();
-        if (backToMenu("Showing airline list").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Showing airline list" , "Admin").equals("1")) adminMenu();
         else showingFlightSchedules();
     }
 //    public void adminSighIn() {
@@ -242,21 +242,5 @@ public class Admin {
      * @param action => and your action in others functions
      * @return => has two options, and you can choose one of them and your choice will return to be considered
      */
-    public String backToMenu(String action) {
 
-        System.out.println(Appearance.TEXT_ITALIC + "1. Back to Admin menu");
-        System.out.println("2. Continue " + action + Appearance.RESET_STYLE);
-        String choice = input.next();
-
-        while (true) {
-            choice = TEMPLATE.availableInput(choice);
-            if(!(choice.equals("1") || choice.equals("2"))){
-                System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_COLOR);
-                choice = input.next();
-            }else{
-                break;
-            }
-        }
-        return choice;
-    }
 }

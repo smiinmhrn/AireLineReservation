@@ -95,4 +95,21 @@ public class Template {
         if (Integer.parseInt(day) >= 1 && Integer.parseInt(day) < 10) day = "0" + day;
         return year + "-" + month + "-" + day;
     }
+    public String backToMenu(String action, String user) {
+
+        System.out.println(Appearance.TEXT_ITALIC + "1. Back to " + user + " menu");
+        System.out.println("2. Continue " + action + Appearance.RESET_STYLE);
+        String choice = input.next();
+
+        while (true) {
+            choice = availableInput(choice);
+            if(!(choice.equals("1") || choice.equals("2"))){
+                System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_COLOR);
+                choice = input.next();
+            }else{
+                break;
+            }
+        }
+        return choice;
+    }
 }

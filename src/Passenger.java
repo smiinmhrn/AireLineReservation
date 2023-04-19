@@ -30,6 +30,7 @@ public class Passenger {
         while (true) {
             switch (TEMPLATE.availableInput(choice)) {
                 case "1":
+                    changePass();
                     break label;
                 case "2":
                     break label;
@@ -50,5 +51,16 @@ public class Passenger {
                     choice = input.next();
             }
         }
+    }
+    private void changePass (){
+
+        System.out.println(Appearance.BLUE + "[ CHANGE PASSWORD PANEL ]" + Appearance.RESET_COLOR);
+        System.out.println(Appearance.TEXT_ITALIC + "Enter your new password :" + Appearance.TEXT_ITALIC);
+        String password = input.next();
+
+        passengerActions.changPassword(username,password);
+        System.out.println(Appearance.GREEN + "Password change successfully" + Appearance.RESET_COLOR);
+        if (TEMPLATE.backToMenu("Passenger" , "Changing").equals("1")) passengerMenu();
+        else changePass();
     }
 }
