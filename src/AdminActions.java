@@ -42,10 +42,10 @@ public class AdminActions extends User {
     public void addAdminAccount(Users users) {
         addAccount(users);
     }
-    public int searchAdminName(String username) {
+    public Users searchAdminName(String username) {
         return searchUsername(username);
     }
-    public boolean searchAdminPassword(String password) {
-        return searchPassword(password);
+    public boolean searchAdminPassword(String password , String username) {
+        return searchPassword(password , username);
     }
 }

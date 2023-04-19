@@ -211,13 +211,13 @@ public class Admin {
     }
     public void adminSighIn() {
 
-        ADMIN_ACTIONS.addAdminAccount(new Users("samin" , "samin228"));
+        ADMIN_ACTIONS.addAdminAccount(new Users("samin" , "samin228" , "0"));
         System.out.println(Appearance.BLUE + "[ ADMIN SIGN IN PANEL ]" + Appearance.RESET_COLOR);
         System.out.println(Appearance.TEXT_ITALIC + "Enter your username :"  + Appearance.RESET_STYLE );
         String username = input.next();
 
         while (true) {
-            if (ADMIN_ACTIONS.searchAdminName(username) != -1) {
+            if (ADMIN_ACTIONS.searchAdminName(username) != null) {
                 break;
             }else {
                 System.out.println(Appearance.RED + "Wrong username! Try again :" + Appearance.RESET_COLOR);
@@ -228,7 +228,7 @@ public class Admin {
         System.out.println(Appearance.TEXT_ITALIC + "Enter your password :"  + Appearance.RESET_STYLE );
         String password = input.next();
         while (true){
-            if (ADMIN_ACTIONS.searchAdminPassword(password)){
+            if (ADMIN_ACTIONS.searchAdminPassword(password , "samin")){
                 adminMenu();
                 break;
             }else {
