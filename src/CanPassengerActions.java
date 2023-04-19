@@ -9,5 +9,7 @@ public interface CanPassengerActions {
     int searchByPrice(int lower , int upper);
     int searchBySeats(String shouldSearch);
     String getPrice(int index);
-    String getSeats(int index);
+    boolean availableSeats(int index);
+    void increaseSeats(int index);
+    void decreaseSeats(int index);
 }

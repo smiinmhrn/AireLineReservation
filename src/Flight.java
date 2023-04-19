@@ -88,7 +88,6 @@ public class Flight implements CanAdminActions , CanPassengerActions{
     public String getPrice(int index){
         return FLIGHTS_LIST.get(index).getPrice();
     }
-    @Override
     public String getSeats(int index){
         return FLIGHTS_LIST.get(index).getSeats();
     }
@@ -132,5 +131,19 @@ public class Flight implements CanAdminActions , CanPassengerActions{
     @Override
     public void printAllAirLine(){
         for (int i = 0; i < FLIGHTS_LIST.size(); i++) printSingleAirLine(i);
+    }
+    @Override
+    public boolean availableSeats(int index) {
+        return FLIGHTS_LIST.get(index).getSeats().equals("0");
+    }
+    @Override
+    public void increaseSeats(int index) {
+        int newSeat = Integer.parseInt(FLIGHTS_LIST.get(index).getSeats()) + 1;
+        FLIGHTS_LIST.get(index).setSeats(String.valueOf(newSeat));
+    }
+    @Override
+    public void decreaseSeats(int index) {
+        int newSeat = Integer.parseInt(FLIGHTS_LIST.get(index).getSeats()) - 1;
+        FLIGHTS_LIST.get(index).setSeats(String.valueOf(newSeat));
     }
 }
