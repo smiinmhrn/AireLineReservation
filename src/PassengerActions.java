@@ -12,52 +12,34 @@ public class PassengerActions {
     }
     public boolean searchByFlightId(String shouldSearch) {
         int index = passengerActions.searchByFlightId(shouldSearch);
-        if (index != -1) {
-            passengerActions.printSingleAirLine(index);
+        if (index != -1){
+            printSingleLine(index);
             return true;
-        } return false;
+        }return false;
     }
     public boolean searchByOrigin(String shouldSearch) {
         int index = passengerActions.searchByOrigin(shouldSearch);
-        if (index != -1) {
-//            passengerActions.printSingleAirLine(index);
-            return true;
-        } return false;
+        return index != -1;
     }
     public boolean searchByDestination(String shouldSearch) {
         int index = passengerActions.searchByDestination(shouldSearch);
-        if (index != -1) {
-            passengerActions.printSingleAirLine(index);
-            return true;
-        } return false;
+        return index != -1;
     }
     public boolean searchByDate(String shouldSearch) {
         int index = passengerActions.searchByDate(shouldSearch);
-        if (index != -1) {
-            passengerActions.printSingleAirLine(index);
-            return true;
-        } return false;
+        return index != -1;
     }
     public boolean searchByTime(String shouldSearch) {
         int index = passengerActions.searchByTime(shouldSearch);
-        if (index != -1) {
-            passengerActions.printSingleAirLine(index);
-            return true;
-        } return false;
+        return index != -1;
     }
     public boolean searchByPrice(int lower, int upper) {
         int index = passengerActions.searchByPrice(lower, upper);
-        if (index != -1) {
-            passengerActions.printSingleAirLine(index);
-            return true;
-        } return false;
+        return index != -1;
     }
     public boolean searchBySeats(String shouldSearch) {
         int index = passengerActions.searchBySeats(shouldSearch);
-        if (index != -1) {
-            passengerActions.printSingleAirLine(index);
-            return true;
-        } return false;
+        return index != -1;
     }
     public void printAllLines() {
         passengerActions.printAllAirLine();
