@@ -152,18 +152,18 @@ public class Passenger {
             }
         }
         int prosses = 1 ;
-        while (true) {
-            if (passengerActions.availableSeat(result)){
-                prosses = 0 ;
-                System.out.println("This airline is full !. try again with another airline");
-            }else break;
+
+        if (passengerActions.availableSeat(result)){
+            prosses = 0 ;
+            System.out.println("This airline is full ! try again with another airline");
         }
+
         if (prosses !=0) {
             while (true){
                 if (passengerActions.isPriceEnough(username,result)) break;
                 else {
                     System.out.println(Appearance.RED + "Not enough money for buying! Charge your account" + Appearance.RESET_COLOR);
-                addCharge(0);
+                    addCharge(0);
                 }
             }
 
