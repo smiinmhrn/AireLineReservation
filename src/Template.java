@@ -41,9 +41,9 @@ public class Template {
                 minute = availableInput(input.next());
             }else break;
         }
-        System.out.println(minute);
-        if ((Integer.parseInt(minute) >= 0 && Integer.parseInt(minute) < 10) || (!minute.equals("0"))) minute = "0" + minute;
-        System.out.println(hour + ":" + minute);
+        if (Integer.parseInt(minute) == 0) minute = "0";
+        if ((Integer.parseInt(minute) >= 0 && Integer.parseInt(minute) < 10) || (minute.equals("0"))) minute = "0" + minute;
+
         return hour + ":" + minute;
     }
     // creating date template and return a date in its template
