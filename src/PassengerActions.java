@@ -19,27 +19,27 @@ public class PassengerActions {
     }
     public boolean searchByOrigin(String shouldSearch) {
         int index = passengerActions.searchByOrigin(shouldSearch);
-        return index != -1;
+        return index == 0;
     }
     public boolean searchByDestination(String shouldSearch) {
         int index = passengerActions.searchByDestination(shouldSearch);
-        return index != -1;
+        return index == 0;
     }
     public boolean searchByDate(String shouldSearch) {
         int index = passengerActions.searchByDate(shouldSearch);
-        return index != -1;
+        return index == 0;
     }
     public boolean searchByTime(String shouldSearch) {
         int index = passengerActions.searchByTime(shouldSearch);
-        return index != -1;
+        return index == 0;
     }
     public boolean searchByPrice(int lower, int upper) {
         int index = passengerActions.searchByPrice(lower, upper);
-        return index != -1;
+        return index == 0;
     }
     public boolean searchBySeats(String shouldSearch) {
         int index = passengerActions.searchBySeats(shouldSearch);
-        return index != -1;
+        return index == 0;
     }
     public void printAllLines() {
         passengerActions.printAllAirLine();

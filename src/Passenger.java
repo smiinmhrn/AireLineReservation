@@ -82,36 +82,36 @@ public class Passenger {
                 case "1" :
                     System.out.println(Appearance.TEXT_ITALIC + "Type the Flight id :" + Appearance.TEXT_ITALIC);
                     if (!passengerActions.searchByFlightId(input.next()))
-                         System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
 
                 case "2" :
                     System.out.println(Appearance.TEXT_ITALIC + "Type the Origin :" + Appearance.TEXT_ITALIC);
-                    if (!passengerActions.searchByOrigin(input.next()))
-                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+                    if (passengerActions.searchByOrigin(input.next()))
+                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
                 case "3" :
                     System.out.println(Appearance.TEXT_ITALIC + "Type the Distinction :" + Appearance.TEXT_ITALIC);
-                    if (!passengerActions.searchByDestination(input.next()))
-                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+                    if (passengerActions.searchByDestination(input.next()))
+                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
                 case "4" :
                     System.out.println(Appearance.TEXT_ITALIC + "Type the Date :" + Appearance.TEXT_ITALIC);
-                    if (!passengerActions.searchByDate(input.next()))
-                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+                    if (passengerActions.searchByDate(TEMPLATE.dateTemplate()))
+                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
                 case "5" :
                     System.out.println(Appearance.TEXT_ITALIC + "Type the Time :" + Appearance.TEXT_ITALIC);
-                    if (!passengerActions.searchByTime(input.next()))
-                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+                    if (passengerActions.searchByTime(TEMPLATE.timeTemplate()))
+                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
                 case "6" :
                     searchByPrice();
                     break label;
                 case "7" :
                     System.out.println(Appearance.TEXT_ITALIC + "Type the Seats :" + Appearance.TEXT_ITALIC);
-                    if (!passengerActions.searchBySeats(input.next()))
-                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+                    if (passengerActions.searchBySeats(input.next()))
+                        System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
                     break label;
                 default:
                     System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RED);
@@ -129,7 +129,7 @@ public class Passenger {
         int upper = Integer.parseInt(TEMPLATE.availableInput(input.next()));
 
         if (!passengerActions.searchByPrice(lower,upper))
-            System.out.println(Appearance.GREEN + "Search without results !" + Appearance.GREEN);
+            System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
 
         if (TEMPLATE.backToMenu("Passenger" , "Searching").equals("1")) passengerMenu();
         else search();
