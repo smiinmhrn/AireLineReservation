@@ -23,6 +23,7 @@ public class User implements CanPassengerUser {
     public void changePass(String username , String newPass) {
         searchUsername(username).setPassword(newPass);
     }
+    @Override
     public String getCharge(String username) {
         return searchUsername(username).getCharge();
     }

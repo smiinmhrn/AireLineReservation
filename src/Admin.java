@@ -73,7 +73,7 @@ public class Admin {
         ADMIN_ACTIONS.addNewAirline(new Flights(flightId , origin , destination , date , time , price , seats));
         System.out.println(Appearance.GREEN + "Adding new airline successfully !" + Appearance.RESET_COLOR);
 
-        if (TEMPLATE.backToMenu("Adding" , "Admin").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin" , "Adding").equals("1")) adminMenu();
         else add();
     }
     // this function is for removing a single airline
@@ -87,7 +87,7 @@ public class Admin {
         ADMIN_ACTIONS.removeAirline(ADMIN_ACTIONS.searchByFlightId(existsFlightId(input.next())));
         System.out.println(Appearance.GREEN + "Removing airline successfully !" + Appearance.RESET_COLOR);
 
-        if (TEMPLATE.backToMenu("Removing" , "Admin").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin" , "Removing").equals("1")) adminMenu();
         else remove();
     }
     /**
@@ -113,7 +113,7 @@ public class Admin {
         String flight = existsFlightId(input.next());
         updateInProgress(ADMIN_ACTIONS.searchByFlightId(flight));
 
-        if (TEMPLATE.backToMenu("Updating" , "Admin").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin" , "Updating").equals("1")) adminMenu();
         else update();
     }
     /**
@@ -206,7 +206,7 @@ public class Admin {
     private void showingFlightSchedules() {
         System.out.println(Appearance.BLUE + " [ AIRLINE SCHEDULES ] " + Appearance.RESET_COLOR);
         ADMIN_ACTIONS.printAllAirlines();
-        if (TEMPLATE.backToMenu("Showing airline list" , "Admin").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin" , "Showing airline list").equals("1")) adminMenu();
         else showingFlightSchedules();
     }
 //    public void adminSighIn() {

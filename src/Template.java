@@ -95,7 +95,7 @@ public class Template {
         if (Integer.parseInt(day) >= 1 && Integer.parseInt(day) < 10) day = "0" + day;
         return year + "-" + month + "-" + day;
     }
-    public String backToMenu(String action, String user) {
+    public String backToMenu(String user, String action) {
 
         System.out.println(Appearance.TEXT_ITALIC + "1. Back to " + user + " menu");
         System.out.println("2. Continue " + action + Appearance.RESET_STYLE);

@@ -3,4 +3,5 @@ public interface CanPassengerUser {
     boolean isEnough(String shouldPay , String username);
     void increaseCharge(String username , String chargeAmount);
     void decreaseCharge(String username , String chargeAmount);
+    String getCharge(String username);
 }

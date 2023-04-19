@@ -16,6 +16,9 @@ public class Ticket {
         }
         return null;
     }
+    public String getFlightIdByHavingTicketId(String username , String ticketId){
+        return searchTicketByHavingTicketId(username,ticketId).getFlightId();
+    }
     public boolean existTicketId(String username , String ticketId) {
         return searchTicketByHavingTicketId(username, ticketId) != null;
     }
@@ -33,5 +36,10 @@ public class Ticket {
                 System.out.println(tickets.getTicketId());
             }
         }
+    }
+    public boolean haveEverBooked(String username) {
+        for (Tickets tickets : TICKETS_LIST)
+            if (tickets.getUsername().equals(username)) return true;
+        return false;
     }
 }

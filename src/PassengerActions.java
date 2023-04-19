@@ -10,33 +10,54 @@ public class PassengerActions {
     public void changPassword(String username, String newPassword) {
         canPassengerUser.changePass(username,newPassword);
     }
-    public void searchByFlightId(String shouldSearch) {
+    public boolean searchByFlightId(String shouldSearch) {
         int index = passengerActions.searchByFlightId(shouldSearch);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
-    public void searchByOrigin(String shouldSearch) {
+    public boolean searchByOrigin(String shouldSearch) {
         int index = passengerActions.searchByOrigin(shouldSearch);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+//            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
-    public void searchByDestination(String shouldSearch) {
+    public boolean searchByDestination(String shouldSearch) {
         int index = passengerActions.searchByDestination(shouldSearch);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
-    public void searchByDate(String shouldSearch) {
+    public boolean searchByDate(String shouldSearch) {
         int index = passengerActions.searchByDate(shouldSearch);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
-    public void searchByTime(String shouldSearch) {
+    public boolean searchByTime(String shouldSearch) {
         int index = passengerActions.searchByTime(shouldSearch);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
-    public void searchByPrice(int lower, int upper) {
+    public boolean searchByPrice(int lower, int upper) {
         int index = passengerActions.searchByPrice(lower, upper);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
-    public void searchBySeats(String shouldSearch) {
+    public boolean searchBySeats(String shouldSearch) {
         int index = passengerActions.searchBySeats(shouldSearch);
-        if (index != -1) passengerActions.printSingleAirLine(index);
+        if (index != -1) {
+            passengerActions.printSingleAirLine(index);
+            return true;
+        } return false;
     }
     public void printAllLines() {
         passengerActions.printAllAirLine();
@@ -46,6 +67,9 @@ public class PassengerActions {
     }
     public int existFlightId(String shouldSearch) {
         return passengerActions.searchByFlightId(shouldSearch);
+    }
+    public int getIndexOfFlightId(String username, String ticketId){
+        return existFlightId(ticket.getFlightIdByHavingTicketId(username,ticketId));
     }
     public String getPrice(int index) {
         return passengerActions.getPrice(index);
@@ -63,7 +87,10 @@ public class PassengerActions {
         ticket.printAllUserTickets(username);
     }
     public void ticketCancellation(String username, String ticketId) {
-        ticket.ticketCancellation(ticket.searchTicketByHavingTicketId(username,ticketId));
+        ticket.ticketCancellation(searchTicket(username,ticketId));
+    }
+    public Tickets searchTicket(String username, String ticketId) {
+        return ticket.searchTicketByHavingTicketId(username,ticketId);
     }
     public void addCharge(String username, String chargeAmount) {
         canPassengerUser.increaseCharge(username, chargeAmount);
@@ -79,5 +106,21 @@ public class PassengerActions {
     }
     private void decreaseCharges(String username , String chargeAmount) {
         canPassengerUser.decreaseCharge(username,chargeAmount);
+    }
+    public void booked(int index , String username) {
+        decreaseSeat(index);
+        String price = getPrice(index);
+        decreaseCharges(username,price);
+    }
+    public void unBooked(int index, String username){
+        increaseSeat(index);
+        String price = getPrice(index);
+        addCharge(username,price);
+    }
+    public String gettingCharge(String username){
+        return canPassengerUser.getCharge(username);
+    }
+    public boolean EverBooked(String username) {
+        return ticket.haveEverBooked(username);
     }
 }
