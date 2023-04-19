@@ -50,7 +50,7 @@ public class RegisterMenu {
         System.out.println("Enter your password :" + Appearance.RESET_STYLE);
         String password = input.next();
         REGISTER.addPassengerAccount(new Users(username,password,"0"));
-        var passenger = new Passenger(username,password,
+        var passenger = new Passenger(username,
                 new Template(),new PassengerActions(new Flight(),new User(),new Ticket()));
         passenger.passengerMenu();
     }
@@ -71,7 +71,7 @@ public class RegisterMenu {
         String password = input.next();
         while (true){
             if (REGISTER.searchPassengerPassword(password,username)){
-                var passenger = new Passenger(username,password,
+                var passenger = new Passenger(username,
                         new Template(),new PassengerActions(new Flight(),new User(),new Ticket()));
                 passenger.passengerMenu();
                 break;

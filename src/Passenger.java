@@ -2,13 +2,11 @@ import appearance.Appearance;
 import java.util.Scanner;
 public class Passenger {
     Scanner input = new Scanner(System.in);
-    private String username;
-    private String password;
+    private final String USERNAME;
     private final Template TEMPLATE;
     private final PassengerActions passengerActions;
-    public Passenger(String username, String password, Template TEMPLATE, PassengerActions passengerActions) {
-        this.username = username;
-        this.password = password;
+    public Passenger(String username, Template TEMPLATE, PassengerActions passengerActions) {
+        this.USERNAME = username;
         this.TEMPLATE = TEMPLATE;
         this.passengerActions = passengerActions;
     }
@@ -63,7 +61,7 @@ public class Passenger {
         System.out.println(Appearance.TEXT_ITALIC + "Enter your new password :" + Appearance.TEXT_ITALIC);
         String password = input.next();
 
-        passengerActions.changPassword(username,password);
+        passengerActions.changPassword(USERNAME,password);
         System.out.println(Appearance.GREEN + "Password change successfully" + Appearance.RESET_COLOR);
         if (TEMPLATE.backToMenu("Passenger" , "Changing").equals("1")) passengerMenu();
         else changePass();
@@ -151,26 +149,26 @@ public class Passenger {
                 flightId = input.next();
             }
         }
-        int prosses = 1 ;
+        int process = 1 ;
 
         if (passengerActions.availableSeat(result)){
-            prosses = 0 ;
+            process = 0 ;
             System.out.println("This airline is full ! try again with another airline");
         }
 
-        if (prosses !=0) {
+        if (process != 0) {
             while (true){
-                if (passengerActions.isPriceEnough(username,result)) break;
+                if (passengerActions.isPriceEnough(USERNAME,result)) break;
                 else {
                     System.out.println(Appearance.RED + "Not enough money for buying! Charge your account" + Appearance.RESET_COLOR);
                     addCharge(0);
                 }
             }
 
-            String ticketId = passengerActions.creatingTicketId(username,flightId);
+            String ticketId = passengerActions.creatingTicketId(USERNAME,flightId);
 
-            passengerActions.addNewTicket(new Tickets(username,flightId,ticketId));
-            passengerActions.booked(result,username);
+            passengerActions.addNewTicket(new Tickets(USERNAME,flightId,ticketId));
+            passengerActions.booked(result, USERNAME);
 
             System.out.println(Appearance.GREEN + "Booking ticket done successfully! Your ticket id is : " + ticketId
                     + Appearance.RESET_STYLE + Appearance.RESET_COLOR);
@@ -184,10 +182,10 @@ public class Passenger {
     private void addCharge(int nextStep) {
 
         System.out.println(Appearance.BLUE + "[ ADD CHARGE PANEL ]" + Appearance.RESET_COLOR);
-        System.out.println("Your total charge is : " + passengerActions.gettingCharge(username));
+        System.out.println("Your total charge is : " + passengerActions.gettingCharge(USERNAME));
         System.out.println(Appearance.TEXT_ITALIC + "How much do you want to charge :" + Appearance.RESET_STYLE);
         String chargeAmount = TEMPLATE.availableInput(input.next());
-        passengerActions.addCharge(username,chargeAmount);
+        passengerActions.addCharge(USERNAME,chargeAmount);
 
         if (nextStep == 1){
             if(TEMPLATE.backToMenu("Passenger" , "Charging").equals("1")) passengerMenu();
@@ -198,9 +196,9 @@ public class Passenger {
 
         if (nextStep == 1) System.out.println(Appearance.BLUE + "[ BOOKED TICKETS PANEL ]" + Appearance.RESET_COLOR);
 
-        if (passengerActions.EverBooked(username)) {
+        if (passengerActions.EverBooked(USERNAME)) {
             System.out.println(Appearance.TEXT_ITALIC + "Your Tickets are :");
-            passengerActions.printTickets(username);
+            passengerActions.printTickets(USERNAME);
             if (nextStep == 1){
                 if(TEMPLATE.backToMenu("Passenger" , "Showing ticket library").equals("1")) passengerMenu();
                 else addCharge(nextStep);
@@ -223,13 +221,13 @@ public class Passenger {
             String ticketId = input.next();
 
             while (true){
-                if (passengerActions.searchTicket(username,ticketId) == null){
+                if (passengerActions.searchTicket(USERNAME,ticketId) == null){
                     System.out.println(Appearance.RED + "This Ticket id dos not exist! Try again :" + Appearance.RESET_COLOR);
                     ticketId = input.next();
                 }else break;
             }
-            passengerActions.ticketCancellation(username,ticketId);
-            passengerActions.unBooked(passengerActions.getIndexOfFlightId(username,ticketId),username);
+            passengerActions.unBooked(passengerActions.getIndexOfFlightId(USERNAME,ticketId), USERNAME);
+            passengerActions.ticketCancellation(USERNAME,ticketId);
             System.out.println(Appearance.GREEN + "Ticket cancel successfully !" + Appearance.RESET_COLOR);
         }
 
