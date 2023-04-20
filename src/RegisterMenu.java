@@ -1,24 +1,23 @@
 import appearance.Appearance;
 import java.util.Scanner;
 public class RegisterMenu {
-    private final NewingClasses newClasses;
+    private final NewingClasses NEWING_CLASSES;
     Scanner input = new Scanner(System.in);
-
     public RegisterMenu(NewingClasses newClasses) {
-        this.newClasses = newClasses;
+        this.NEWING_CLASSES = newClasses;
     }
-
     public void adminSighIn() {
 
-        newClasses.getRegister().addAdminAccount(new Users("samin" , "samin228" , "0"));
+        NEWING_CLASSES.getRegister().addAdminAccount(new Users("samin", "samin228", "0"));
+
         System.out.println(Appearance.BLUE + "[ ADMIN SIGN IN PANEL ]" + Appearance.RESET_COLOR);
         System.out.println(Appearance.TEXT_ITALIC + "Enter your username :"  + Appearance.RESET_STYLE );
         String username = input.next();
 
         while (true) {
-            if (newClasses.getRegister().searchAdminName(username) != null) {
+            if (NEWING_CLASSES.getRegister().searchAdminName(username) != null) {
                 break;
-            }else {
+            } else {
                 System.out.println(Appearance.RED + "Wrong username! Try again :" + Appearance.RESET_COLOR);
                 username = input.next();
             }
@@ -26,12 +25,13 @@ public class RegisterMenu {
 
         System.out.println(Appearance.TEXT_ITALIC + "Enter your password :"  + Appearance.RESET_STYLE );
         String password = input.next();
+
         while (true){
-            if (newClasses.getRegister().searchAdminPassword(password , "samin")){
-                var admin = new Admin(new Templates(),new AdminActions(newClasses.getFLIGHT()),newClasses);
+            if (NEWING_CLASSES.getRegister().searchAdminPassword(password , "samin")){
+                var admin = new Admin(new Templates(), new AdminActions(NEWING_CLASSES.getFLIGHT()), NEWING_CLASSES);
                 admin.adminMenu();
                 break;
-            }else {
+            } else {
                 System.out.println(Appearance.RED + "Wrong password! Try again :"+ Appearance.RESET_COLOR);
                 password = input.next();
             }
@@ -44,16 +44,20 @@ public class RegisterMenu {
         String username = input.next();
 
         while (true) {
-            if (newClasses.getRegister().searchPassengerName(username) != null || username.equals("samin")) {
-                System.out.println(Appearance.RED + "This username is already exist. Try another one :" + Appearance.RESET_COLOR);
+            if (NEWING_CLASSES.getRegister().searchPassengerName(username) != null || username.equals("samin")) {
+                System.out.println(Appearance.RED +
+                        "This username is already exist. Try another one :" + Appearance.RESET_COLOR);
                 username = input.next();
-            }else break;
+            } else break;
         }
+
         System.out.println("Enter your password :" + Appearance.RESET_STYLE);
         String password = input.next();
-        newClasses.getRegister().addPassengerAccount(new Users(username,password,"0"));
-        var passenger = new Passenger(username,
-                new Templates(),new PassengerActions(newClasses.getFLIGHT(),newClasses.getUSER(), newClasses.getTICKET()),newClasses);
+
+        NEWING_CLASSES.getRegister().addPassengerAccount(new Users(username, password,"0"));
+
+        var passenger = new Passenger(username, new Templates(), new PassengerActions(
+                NEWING_CLASSES.getFLIGHT(), NEWING_CLASSES.getUSER(), NEWING_CLASSES.getTICKET()), NEWING_CLASSES);
         passenger.passengerMenu();
     }
     public void passengerSighIn() {
@@ -63,23 +67,28 @@ public class RegisterMenu {
         String username = input.next();
 
         while (true) {
-            if (newClasses.getRegister().searchPassengerName(username) == null || username.equals("samin")) {
-                System.out.println(Appearance.RED + "This username isn't exist. Try another one :" + Appearance.RESET_COLOR);
+            if (NEWING_CLASSES.getRegister().searchPassengerName(username) == null || username.equals("samin")) {
+                System.out.println(Appearance.RED +
+                        "This username isn't exist. Try another one :" + Appearance.RESET_COLOR);
                 username = input.next();
-            }else break;
+            } else break;
         }
 
         System.out.println("Enter your password :");
         String password = input.next();
+
         while (true){
-            if (newClasses.getRegister().searchPassengerPassword(password,username)){
-                var passenger = new Passenger(username,
-                        new Templates(),new PassengerActions(newClasses.getFLIGHT(),newClasses.getUSER(), newClasses.getTICKET()),newClasses);
+            if (NEWING_CLASSES.getRegister().searchPassengerPassword(password, username)){
+                var passenger = new Passenger(username, new Templates(), new PassengerActions(
+                        NEWING_CLASSES.getFLIGHT(), NEWING_CLASSES.getUSER(), NEWING_CLASSES.getTICKET())
+                        ,NEWING_CLASSES);
+
                 passenger.passengerMenu();
                 break;
             }
             else {
-                System.out.println(Appearance.RED + "Wrong password! Try again" + Appearance.RESET_COLOR + Appearance.RESET_STYLE);
+                System.out.println(Appearance.RED +
+                        "Wrong password! Try again" + Appearance.RESET_COLOR + Appearance.RESET_STYLE);
                 password = input.next();
             }
         }

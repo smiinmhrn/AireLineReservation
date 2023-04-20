@@ -1,26 +1,24 @@
 public class Register {
-    private final User user;
-
+    private final User USER;
     public Register(User user) {
-        this.user = user;
+        this.USER = user;
     }
-
     public void addAdminAccount(Users users) {
-        user.addAccount(users);
-    }
-    public Users searchAdminName(String username) {
-        return user.searchUsername(username);
-    }
-    public boolean searchAdminPassword(String password , String username) {
-        return user.searchPassword(password , username);
-    }
-    public Users searchPassengerName(String username) {
-        return user.searchUsername(username);
+        USER.addAccount(users);
     }
     public void addPassengerAccount(Users users) {
-        user.addAccount(users);
+        USER.addAccount(users);
     }
-    public boolean searchPassengerPassword(String password , String username) {
-        return user.searchPassword(password , username);
+    public Users searchAdminName(String username) {
+        return USER.searchUsername(username);
+    }
+    public Users searchPassengerName(String username) {
+        return USER.searchUsername(username);
+    }
+    public boolean searchAdminPassword(String password, String username) {
+        return USER.searchPassword(password, username);
+    }
+    public boolean searchPassengerPassword(String password, String username) {
+        return USER.searchPassword(password, username);
     }
 }

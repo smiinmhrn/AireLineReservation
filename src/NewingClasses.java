@@ -6,23 +6,14 @@ public class NewingClasses {
     public Register getRegister() {
         return register;
     }
-
     public Flight getFLIGHT() {
         return FLIGHT;
     }
-
     public User getUSER() {
         return USER;
     }
-
     public Ticket getTICKET() {
         return TICKET;
     }
-//    public void startProgram(){
-//        var defaultFlights = new DefaultFlights();
-//        defaultFlights.addDefault();
-//
-//        var startProgram = new MainMenu(new Templates());
-//        startProgram.mainMenu();
-//    }
+
 }

@@ -6,7 +6,7 @@ public interface CanPassengerActions {
     int searchByDestination(String shouldSearch);
     int searchByDate(String shouldSearch);
     int searchByTime(String shouldSearch);
-    int searchByPrice(int lower , int upper);
+    int searchByPrice(int lower, int upper);
     int searchBySeats(String shouldSearch);
     String getPrice(int index);
     boolean availableSeats(int index);

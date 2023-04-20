@@ -3,13 +3,11 @@ import appearance.Appearance;
 public class MainMenu {
     Scanner input = new Scanner(System.in);
     private final Templates TEMPLATE;
-    private final NewingClasses newClasses;
-
+    private final NewingClasses NEWING_CLASSES;
     public MainMenu(Templates TEMPLATE, NewingClasses newClasses) {
         this.TEMPLATE = TEMPLATE;
-        this.newClasses = newClasses;
+        this.NEWING_CLASSES = newClasses;
     }
-
     public void mainMenu() {
 
         System.out.println(Appearance.BLUE + "[ WELCOME TO AIRLINE RESERVATION SYSTEM ]" + Appearance.RESET_COLOR);
@@ -20,13 +18,13 @@ public class MainMenu {
 
         String choice = input.next();
         label :
-        while (true){
+        while (true) {
             switch (TEMPLATE.availableInput(choice)) {
                 case "1" :
                     signInAs();
                     break label;
                 case "2" :
-                    var registerMenu = new RegisterMenu(newClasses);
+                    var registerMenu = new RegisterMenu(NEWING_CLASSES);
                     registerMenu.passengerSignUp();
                     break label;
                 default:
@@ -37,6 +35,7 @@ public class MainMenu {
     }
     // a menu which give you two option => sign in as admin or sign in as passenger
     private void signInAs() {
+
         System.out.println(Appearance.BLUE + "[ SIGN IN PANEL ]" + Appearance.RESET_COLOR);
         System.out.println(Appearance.TEXT_ITALIC + """
             1. Sign in as Admin
@@ -44,10 +43,10 @@ public class MainMenu {
             Choose :\s""" );
 
         String choice = input.next();
-        var registerMenu = new RegisterMenu(newClasses);
+        var registerMenu = new RegisterMenu(NEWING_CLASSES);
         label :
-        while (true){
-            switch (TEMPLATE.availableInput(choice)){
+        while (true) {
+            switch (TEMPLATE.availableInput(choice)) {
                 case "1":
                     registerMenu.adminSighIn();
                     break label;
@@ -55,7 +54,8 @@ public class MainMenu {
                     registerMenu.passengerSighIn();
                     break label;
                 default:
-                    System.out.println(Appearance.RED + "Wrong command! Try again :" + Appearance.RESET_STYLE + Appearance.RESET_COLOR);
+                    System.out.println(Appearance.RED +
+                            "Wrong command! Try again :" + Appearance.RESET_STYLE + Appearance.RESET_COLOR);
                     choice = input.next();
             }
         }

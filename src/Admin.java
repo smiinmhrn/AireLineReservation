@@ -4,18 +4,16 @@ public class Admin {
     Scanner input = new Scanner(System.in);
     private final Templates TEMPLATE;
     private final AdminActions ADMIN_ACTIONS;
-    private final NewingClasses newClasses;
-
+    private final NewingClasses NEWING_CLASSES;
     public Admin(Templates TEMPLATE, AdminActions ADMIN_ACTIONS, NewingClasses newClasses) {
         this.TEMPLATE = TEMPLATE;
         this.ADMIN_ACTIONS = ADMIN_ACTIONS;
-        this.newClasses = newClasses;
+        this.NEWING_CLASSES = newClasses;
     }
-
     // this function is for handling admin menu
     public void adminMenu() {
         System.out.println(Appearance.BLUE + "[ ADMIN MENU OPTIONS ]" + Appearance.RESET_COLOR);
-        System.out.println(Appearance.TEXT_ITALIC +  """
+        System.out.println(Appearance.TEXT_ITALIC + """
             1. Add
             2. Update
             3. Remove
@@ -40,7 +38,7 @@ public class Admin {
                     showingFlightSchedules();
                     break label;
                 case "0" :
-                    var mainMenu = new MainMenu(new Templates(),newClasses);
+                    var mainMenu = new MainMenu(new Templates(), NEWING_CLASSES);
                     mainMenu.mainMenu();
                     break label;
                 default :
@@ -55,9 +53,11 @@ public class Admin {
         System.out.println(Appearance.BLUE + "[ ADDING PANEL ]" + Appearance.RESET_COLOR);
         System.out.println(Appearance.TEXT_ITALIC + "Enter Flight id :");
         String flightId = input.next().toUpperCase();
-        while (true){
-            if (ADMIN_ACTIONS.searchByFlightId(flightId) != -1){
-                System.out.println("This flight id is existed! Try again with another flight id :");
+
+        while (true) {
+            if (ADMIN_ACTIONS.searchByFlightId(flightId) != -1) {
+                System.out.println(Appearance.RED +
+                        "This flight id is existed! Try again with another flight id :" + Appearance.RESET_COLOR);
                 flightId = input.next().toUpperCase();
             } else break;
         }
@@ -67,9 +67,12 @@ public class Admin {
 
         System.out.println("Enter Destination :");
         String destination = TEMPLATE.templateStringStyle(input.next());
-        while (true){
-            if (origin.equals(destination)){
-                System.out.println("Origin and Destination cant be the same! Try again with another destination");
+
+        while (true) {
+            if (origin.equals(destination)) {
+                System.out.println(Appearance.RED +
+                        "Origin and Destination cant be the same! Try again with another destination"
+                        + Appearance.RESET_COLOR);
                 destination = TEMPLATE.templateStringStyle(input.next());
             } else break;
         }
@@ -86,10 +89,10 @@ public class Admin {
         System.out.println("Enter Seats :" + Appearance.RESET_STYLE);
         String seats = TEMPLATE.availableInput(input.next());
 
-        ADMIN_ACTIONS.addNewAirline(new Flights(flightId , origin , destination , date , time , price , seats));
+        ADMIN_ACTIONS.addNewAirline(new Flights(flightId, origin, destination, date, time, price, seats));
         System.out.println(Appearance.GREEN + "Adding new airline successfully !" + Appearance.RESET_COLOR);
 
-        if (TEMPLATE.backToMenu("Admin" , "Adding").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin", "Adding").equals("1")) adminMenu();
         else add();
     }
     // this function is for removing a single airline
@@ -98,21 +101,22 @@ public class Admin {
         System.out.println(Appearance.BLUE + "[ REMOVE PANEL ]" + Appearance.RESET_COLOR);
         ADMIN_ACTIONS.printAllAirlines();
 
-        System.out.println(Appearance.TEXT_ITALIC + "Type the Flight Id that you want to remove :" + Appearance.RESET_STYLE);
+        System.out.println(Appearance.TEXT_ITALIC +
+                "Type the Flight Id that you want to remove :" + Appearance.RESET_STYLE);
         String flightId = existsFlightId(input.next());
+
         int process = 1;
-
-
-        if (newClasses.getTICKET().searchFlightId(flightId)){
-            System.out.println("This airline have been booked and you can not remove it !");
+        if (NEWING_CLASSES.getTICKET().searchFlightId(flightId)) {
+            System.out.println(Appearance.GREEN +
+                    "This airline have been booked and you can not remove it !" + Appearance.RESET_COLOR);
             process = 0;
         }
-        if (process != 0){
+        if (process != 0) {
             ADMIN_ACTIONS.removeAirline(ADMIN_ACTIONS.searchByFlightId(flightId));
             System.out.println(Appearance.GREEN + "Removing airline successfully !" + Appearance.RESET_COLOR);
         }
 
-        if (TEMPLATE.backToMenu("Admin" , "Removing").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin", "Removing").equals("1")) adminMenu();
         else remove();
     }
     /**
@@ -122,7 +126,8 @@ public class Admin {
     private String existsFlightId(String id) {
         while (true) {
             if (ADMIN_ACTIONS.searchByFlightId(id) == -1) {
-                System.out.println(Appearance.RED + "This Flight id dos not exist! Try again :" + Appearance.RESET_COLOR);
+                System.out.println(Appearance.RED +
+                        "This Flight id dos not exist! Try again :" + Appearance.RESET_COLOR);
                 id = input.next();
             } else break;
         } return id;
@@ -136,15 +141,16 @@ public class Admin {
         System.out.println(Appearance.TEXT_ITALIC + "Type the Flight id you want to update :" + Appearance.RESET_STYLE);
 
         String flight = existsFlightId(input.next());
-        int process = 1;
 
-        if (newClasses.getTICKET().searchFlightId(flight)){
-            System.out.println("This airline have been booked and you can not update it !");
+        int process = 1;
+        if (NEWING_CLASSES.getTICKET().searchFlightId(flight)){
+            System.out.println(Appearance.GREEN +
+                    "This airline have been booked and you can not update it !" + Appearance.RESET_COLOR);
             process = 0;
         }
         if (process != 0) updateInProgress(ADMIN_ACTIONS.searchByFlightId(flight));
 
-        if (TEMPLATE.backToMenu("Admin" , "Updating").equals("1")) adminMenu();
+        if (TEMPLATE.backToMenu("Admin", "Updating").equals("1")) adminMenu();
         else update();
     }
     /**
@@ -168,9 +174,11 @@ public class Admin {
                 case "1" :
                     System.out.println("Enter your new Flight Id :");
                     String id = input.next().toUpperCase();
+
                     while (true) {
                         if (ADMIN_ACTIONS.searchByFlightId(id) != -1) {
-                            System.out.println(Appearance.RED + "This Flight id dos exist! Try again :" + Appearance.RESET_COLOR);
+                            System.out.println(Appearance.RED +
+                                    "This Flight id dos exist! Try again :" + Appearance.RESET_COLOR);
                             id = input.next().toUpperCase();
                         } else break;
                     }
@@ -181,31 +189,31 @@ public class Admin {
                     System.out.println("Enter your new Origin :");
                     String origin = TEMPLATE.templateStringStyle(input.next());
 
-                    ADMIN_ACTIONS.updatingOrigin(origin , result);
+                    ADMIN_ACTIONS.updatingOrigin(origin, result);
                     break label;
 
                 case "3" :
                     System.out.println("Enter your new Destination :");
                     String destination = TEMPLATE.templateStringStyle(input.next());
-                    ADMIN_ACTIONS.updatingDestination(destination , result);
+                    ADMIN_ACTIONS.updatingDestination(destination, result);
                     break label;
 
                 case "4" :
-                    ADMIN_ACTIONS.updatingDate(TEMPLATE.dateTemplate() , result);
+                    ADMIN_ACTIONS.updatingDate(TEMPLATE.dateTemplate(), result);
                     break label;
 
                 case "5" :
-                    ADMIN_ACTIONS.updatingTime(TEMPLATE.timeTemplate() , result);
+                    ADMIN_ACTIONS.updatingTime(TEMPLATE.timeTemplate(), result);
                     break label;
 
                 case "6" :
                     System.out.println("Enter your new Price :");
-                    ADMIN_ACTIONS.updatingPrice(TEMPLATE.availableInput(input.next()) , result);
+                    ADMIN_ACTIONS.updatingPrice(TEMPLATE.availableInput(input.next()), result);
                     break label;
 
                 case "7" :
                     System.out.println("Enter your new Seats :");
-                    ADMIN_ACTIONS.updatingSeats(TEMPLATE.availableInput(input.next()) , result);
+                    ADMIN_ACTIONS.updatingSeats(TEMPLATE.availableInput(input.next()), result);
                     break label;
 
                 default :
@@ -228,7 +236,8 @@ public class Admin {
                 case "2" :
                     break label;
                 default :
-                    System.out.println(Appearance.RED + "Wrong command! Try again :"+ Appearance.RESET_COLOR + Appearance.RESET_STYLE);
+                    System.out.println(Appearance.RED +
+                            "Wrong command! Try again :"+ Appearance.RESET_COLOR + Appearance.RESET_STYLE);
                     secondChoice = input.next();
             }
         }
@@ -237,7 +246,8 @@ public class Admin {
     private void showingFlightSchedules() {
         System.out.println(Appearance.BLUE + " [ AIRLINE SCHEDULES ] " + Appearance.RESET_COLOR);
         ADMIN_ACTIONS.printAllAirlines();
-        if (TEMPLATE.backToMenu("Admin" , "Showing airline list").equals("1")) adminMenu();
+
+        if (TEMPLATE.backToMenu("Admin", "Showing airline list").equals("1")) adminMenu();
         else showingFlightSchedules();
     }
 }

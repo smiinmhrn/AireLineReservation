@@ -63,7 +63,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
         } return result;
     }
     @Override
-    public int searchByPrice(int lower , int upper) {
+    public int searchByPrice(int lower, int upper) {
         int result = 0;
         for (int i = 7; i < FLIGHTS_LIST.size(); i++) {
             if (upper<=Integer.parseInt(FLIGHTS_LIST.get(i).getPrice()) &&
@@ -90,29 +90,29 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     }
     // these next 7 functions get a string which should replace and get an index of an address that should update
     @Override
-    public void updateFlightId(String toUpdate , int index){ FLIGHTS_LIST.get(index).setFlightId(toUpdate); }
+    public void updateFlightId(String toUpdate, int index){ FLIGHTS_LIST.get(index).setFlightId(toUpdate); }
     @Override
-    public void updateOrigin(String toUpdate , int index){
+    public void updateOrigin(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setOrigin(toUpdate);
     }
     @Override
-    public void updateDestination(String toUpdate , int index){
+    public void updateDestination(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setDestination(toUpdate);
     }
     @Override
-    public void updateDate(String toUpdate , int index){
+    public void updateDate(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setDate(toUpdate);
     }
     @Override
-    public void updateTime(String toUpdate , int index){
+    public void updateTime(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setTime(toUpdate);
     }
     @Override
-    public void updatePrice(String toUpdate , int index){
+    public void updatePrice(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setPrice(toUpdate);
     }
     @Override
-    public void updateSeats(String toUpdate , int index){
+    public void updateSeats(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setSeats(toUpdate);
     }
     // this function is for print all airlines

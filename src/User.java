@@ -9,18 +9,18 @@ public class User implements CanPassengerUser {
      */
     public Users searchUsername(String name) {
         for (Users users : USERS_LIST)
-            if (users.getUsername().equals(name)) return users;
+            if (users.getUSERNAME().equals(name)) return users;
         return null;
     }
     // use for check if the password that user enter ( function get it first ) is similar to its username password
-    public boolean searchPassword(String password , String username) {
+    public boolean searchPassword(String password, String username) {
         return searchUsername(username).getPassword().equals(password);
     }
     // this function is use for adding new account
     public void addAccount(Users users) { USERS_LIST.add(users); }
     // use for changing password
     @Override
-    public void changePass(String username , String newPass) {
+    public void changePass(String username, String newPass) {
         searchUsername(username).setPassword(newPass);
     }
     @Override
@@ -29,17 +29,19 @@ public class User implements CanPassengerUser {
     }
     // return a boolean that shows if charge is enough for buying tickets or not
     @Override
-    public boolean isEnough(String shouldPay , String username){
+    public boolean isEnough(String shouldPay, String username){
         return Long.parseLong(getCharge(username)) >= Long.parseLong(shouldPay);
     }
     @Override
-    public void increaseCharge(String username , String chargeAmount) {
+    public void increaseCharge(String username, String chargeAmount) {
+
         String oldCharge = searchUsername(username).getCharge();
         long newCharge = Long.parseLong(oldCharge) + Long.parseLong(chargeAmount);
         searchUsername(username).setCharge(String.valueOf(newCharge));
     }
     @Override
-    public void decreaseCharge(String username , String chargeAmount) {
+    public void decreaseCharge(String username, String chargeAmount) {
+
         String oldCharge = searchUsername(username).getCharge();
         long newCharge = Long.parseLong(oldCharge) - Long.parseLong(chargeAmount);
         searchUsername(username).setCharge(String.valueOf(newCharge));
