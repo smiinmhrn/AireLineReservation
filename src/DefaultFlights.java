@@ -1,9 +1,9 @@
+// this class is responsible for adding 10 default airlines
 public class DefaultFlights {
     private final NewingClasses NEWING_CLASSES;
     public DefaultFlights(NewingClasses newClasses) {
         this.NEWING_CLASSES = newClasses;
     }
-    // this class is responsible for adding 10 default airline
     public void addDefault(){
 
         NEWING_CLASSES.getFLIGHT().addAirlines(

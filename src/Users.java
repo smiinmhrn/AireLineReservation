@@ -1,5 +1,5 @@
+// this class is responsible for saving username and password and set and get password and username wherever needed
 public class Users {
-    // this class is responsible for saving username and password and set and get password and username wherever needed
     private final String USERNAME;
     private String password;
     private String charge;

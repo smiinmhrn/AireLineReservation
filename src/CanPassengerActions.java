@@ -1,3 +1,4 @@
+// this interface implements in Flight class and use in PassengerActions class
 public interface CanPassengerActions {
     void printAllAirLine();
     void printSingleAirLine(int index);

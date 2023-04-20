@@ -1,3 +1,4 @@
+// this interface implements in Flight class and use in AdminActions class
 public interface CanAdminActions {
     void addAirlines(Flights flights);
     void printAllAirLine();

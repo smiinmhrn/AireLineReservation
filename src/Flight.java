@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+// this class is responsible for doing some actions in airline list and use
+// in AdminActions and PassengerActions classes with interface
 public class Flight implements CanAdminActions , CanPassengerActions {
-    // this class is responsible for doing some actions in airline list
     private final List<Flights> FLIGHTS_LIST = new ArrayList<>();
     // this function is for adding new airline
     @Override
     public void addAirlines(Flights flights) { FLIGHTS_LIST.add(flights); }
-    // this function is for removing new airline
+    // this function is for removing an exists airline
     @Override
     public void removeAirLine(int index){
         FLIGHTS_LIST.remove(index);
@@ -83,12 +84,13 @@ public class Flight implements CanAdminActions , CanPassengerActions {
             }
         } return result;
     }
-    // getPrice and getSeats get the index of address and return the value of price and seat
+    // this function use for getting price by having the index of address witch having that price
     @Override
     public String getPrice(int index){
         return FLIGHTS_LIST.get(index).getPrice();
     }
     // these next 7 functions get a string which should replace and get an index of an address that should update
+    // and update information of airlines
     @Override
     public void updateFlightId(String toUpdate, int index){ FLIGHTS_LIST.get(index).setFlightId(toUpdate); }
     @Override
@@ -115,7 +117,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     public void updateSeats(String toUpdate, int index){
         FLIGHTS_LIST.get(index).setSeats(toUpdate);
     }
-    // this function is for print all airlines
+    // this function is for print all airlines list
     @Override
     public void printSingleAirLine(int index) {
         System.out.printf("| %-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s ",
@@ -129,15 +131,18 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     public void printAllAirLine(){
         for (int i = 0; i < FLIGHTS_LIST.size(); i++) printSingleAirLine(i);
     }
+    // this function use for check if an airline have available seat or not for booking
     @Override
     public boolean availableSeats(int index) {
         return FLIGHTS_LIST.get(index).getSeats().equals("0");
     }
+    // this function use for increase seats when someone booking an airline
     @Override
     public void increaseSeats(int index) {
         int newSeat = Integer.parseInt(FLIGHTS_LIST.get(index).getSeats()) + 1;
         FLIGHTS_LIST.get(index).setSeats(String.valueOf(newSeat));
     }
+    // this function use for decrease seats when someone cancel a booking airline
     @Override
     public void decreaseSeats(int index) {
         int newSeat = Integer.parseInt(FLIGHTS_LIST.get(index).getSeats()) - 1;

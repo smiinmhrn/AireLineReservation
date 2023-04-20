@@ -1,5 +1,5 @@
+// this class is for get filed of class and set them
 public class Flights {
-    // this class is for get methods of class and set them
     private String flightId;
     private String origin;
     private String destination;

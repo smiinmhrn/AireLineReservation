@@ -1,5 +1,6 @@
 import appearance.Appearance;
 import java.util.Scanner;
+// this class is handling passenger menu and all passenger options in passenger menu
 public class Passenger {
     Scanner input = new Scanner(System.in);
     private final String USERNAME;
@@ -12,6 +13,7 @@ public class Passenger {
         this.PASSENGER_ACTIONS = passengerActions;
         this.NEWING_CLASSES = newClasses;
     }
+    // this function is for showing passenger menu
     public void passengerMenu() {
 
         System.out.println(Appearance.BLUE + "[ PASSENGER MENU OPTIONS ]" + Appearance.RESET_COLOR);
@@ -57,6 +59,7 @@ public class Passenger {
             }
         }
     }
+    // this function use for changing passenger password
     private void changePass (){
 
         System.out.println(Appearance.BLUE + "[ CHANGE PASSWORD PANEL ]" + Appearance.RESET_COLOR);
@@ -68,6 +71,7 @@ public class Passenger {
         if (TEMPLATE.backToMenu("Passenger", "Changing").equals("1")) passengerMenu();
         else changePass();
     }
+    // this function and next function use for searching airlines in 7 different ways
     private void search() {
 
         PASSENGER_ACTIONS.printAllLines();
@@ -128,6 +132,7 @@ public class Passenger {
         if (TEMPLATE.backToMenu("Passenger" , "Searching").equals("1")) passengerMenu();
         else search();
     }
+    // this function use for searching airline by having price amount
     private void searchByPrice() {
 
         System.out.println(Appearance.TEXT_ITALIC + "Type the price should lower than :");
@@ -142,6 +147,7 @@ public class Passenger {
         if (TEMPLATE.backToMenu("Passenger", "Searching").equals("1")) passengerMenu();
         else search();
     }
+    // this function use for booking tickets
     private void bookingTicket() {
 
         PASSENGER_ACTIONS.printAllLines();
@@ -193,6 +199,7 @@ public class Passenger {
         if (TEMPLATE.backToMenu("passenger", "booking").equals("1")) passengerMenu();
         else bookingTicket();
     }
+    // this function use for increase account charge
     private void addCharge(int nextStep) {
 
         System.out.println(Appearance.BLUE + "[ ADD CHARGE PANEL ]" + Appearance.RESET_COLOR);
@@ -207,6 +214,7 @@ public class Passenger {
             else addCharge(nextStep);
         }
     }
+    // this function use for showing all booking tickets
     private boolean bookedTickets(int nextStep) {
 
         if (nextStep == 1) System.out.println(Appearance.BLUE + "[ BOOKED TICKETS PANEL ]" + Appearance.RESET_COLOR);
@@ -228,6 +236,7 @@ public class Passenger {
         }
         return false;
     }
+    // this function use for cancelling tickets
     private void ticketCancellation() {
 
         System.out.println(Appearance.BLUE + "[ TICKET CANCELLATION PANEL ]" + Appearance.RESET_COLOR);

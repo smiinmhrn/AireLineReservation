@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import appearance.Appearance;
+// this class responsible for showing main menu and SignInAs menu
 public class MainMenu {
     Scanner input = new Scanner(System.in);
     private final Templates TEMPLATE;
@@ -8,6 +9,7 @@ public class MainMenu {
         this.TEMPLATE = TEMPLATE;
         this.NEWING_CLASSES = newClasses;
     }
+    // this function use for showing main menu
     public void mainMenu() {
 
         System.out.println(Appearance.BLUE + "[ WELCOME TO AIRLINE RESERVATION SYSTEM ]" + Appearance.RESET_COLOR);
@@ -33,7 +35,7 @@ public class MainMenu {
             }
         }
     }
-    // a menu which give you two option => sign in as admin or sign in as passenger
+    // this function use for showing a menu which give you two option => sign in as admin or sign in as passenger
     private void signInAs() {
 
         System.out.println(Appearance.BLUE + "[ SIGN IN PANEL ]" + Appearance.RESET_COLOR);

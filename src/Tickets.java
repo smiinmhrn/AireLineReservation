@@ -1,3 +1,4 @@
+// this class is for get filed of class and creat getter for them
 public class Tickets {
     private final String USERNAME;
     private final String FLIGHT_ID;

@@ -1,3 +1,4 @@
+// this interface implements in User class and use in PassengerActions class
 public interface CanPassengerUser {
     void changePass(String username, String newPass);
     boolean isEnough(String shouldPay, String username);

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import appearance.Appearance;
+// this class has responsible for creating templates forms
 public class Templates {
     Scanner input = new Scanner(System.in);
     // check if inputs are numbers not anything else
@@ -16,6 +17,7 @@ public class Templates {
         }
         return choice;
     }
+    // creating string style => avery letter of a word should be lowercase except first letter
     public String templateStringStyle(String inputSearch) {
         return inputSearch.substring(0,1).toUpperCase() + inputSearch.substring(1).toLowerCase();
     }
@@ -105,6 +107,7 @@ public class Templates {
         if (Integer.parseInt(day) >= 1 && Integer.parseInt(day) < 10) day = "0" + day;
         return year + "-" + month + "-" + day;
     }
+    // creating a template menu for moving to another menu
     public String backToMenu(String user, String action) {
 
         System.out.println(Appearance.TEXT_ITALIC + "1. Back to " + user + " menu");

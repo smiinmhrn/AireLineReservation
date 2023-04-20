@@ -1,5 +1,6 @@
 import appearance.Appearance;
 import java.util.Scanner;
+// this class is handling admin menu and all admins options in admin menu
 public class Admin {
     Scanner input = new Scanner(System.in);
     private final Templates TEMPLATE;
@@ -10,7 +11,7 @@ public class Admin {
         this.ADMIN_ACTIONS = ADMIN_ACTIONS;
         this.NEWING_CLASSES = newClasses;
     }
-    // this function is for handling admin menu
+    // this function is for showing admin menu
     public void adminMenu() {
         System.out.println(Appearance.BLUE + "[ ADMIN MENU OPTIONS ]" + Appearance.RESET_COLOR);
         System.out.println(Appearance.TEXT_ITALIC + """
@@ -95,7 +96,7 @@ public class Admin {
         if (TEMPLATE.backToMenu("Admin", "Adding").equals("1")) adminMenu();
         else add();
     }
-    // this function is for removing a single airline
+    // this function is for removing single airline
     private void remove() {
 
         System.out.println(Appearance.BLUE + "[ REMOVE PANEL ]" + Appearance.RESET_COLOR);
