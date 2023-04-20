@@ -24,7 +24,7 @@ public class Ticket {
     public String getFlightIdByHavingTicketId(String username , String ticketId){
         return searchTicketByHavingTicketId(username,ticketId).getFLIGHT_ID();
     }
-    public boolean existTicketId(String username , String ticketId) {
+    private boolean existTicketId(String username , String ticketId) {
         return searchTicketByHavingTicketId(username, ticketId) != null;
     }
     public String creatTicketId(String username , String flightId) {

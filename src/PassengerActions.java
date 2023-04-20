@@ -53,7 +53,7 @@ public class PassengerActions {
     public int getIndexOfFlightId(String username, String ticketId){
         return existFlightId(TICKET.getFlightIdByHavingTicketId(username,ticketId));
     }
-    public String getPrice(int index) {
+    private String getPrice(int index) {
         return PASSENGER_ACTIONS.getPrice(index);
     }
     public boolean isPriceEnough(String username, int index) {
