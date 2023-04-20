@@ -16,6 +16,11 @@ public class Ticket {
         }
         return null;
     }
+    public boolean searchFlightId(String flightId) {
+        for (Tickets tickets : TICKETS_LIST)
+            if (tickets.getFLIGHT_ID().equals(flightId)) return true;
+        return false;
+    }
     public String getFlightIdByHavingTicketId(String username , String ticketId){
         return searchTicketByHavingTicketId(username,ticketId).getFLIGHT_ID();
     }

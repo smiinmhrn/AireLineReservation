@@ -95,9 +95,18 @@ public class Admin {
         ADMIN_ACTIONS.printAllAirlines();
 
         System.out.println(Appearance.TEXT_ITALIC + "Type the Flight Id that you want to remove :" + Appearance.RESET_STYLE);
+        String flightId = existsFlightId(input.next());
+        int process = 1;
 
-        ADMIN_ACTIONS.removeAirline(ADMIN_ACTIONS.searchByFlightId(existsFlightId(input.next())));
-        System.out.println(Appearance.GREEN + "Removing airline successfully !" + Appearance.RESET_COLOR);
+        var ticket = new Ticket();
+        if (ticket.searchFlightId(flightId)){
+            System.out.println("This airline have been booked and you can not remove it !");
+            process = 0;
+        }
+        if (process != 0){
+            ADMIN_ACTIONS.removeAirline(ADMIN_ACTIONS.searchByFlightId(flightId));
+            System.out.println(Appearance.GREEN + "Removing airline successfully !" + Appearance.RESET_COLOR);
+        }
 
         if (TEMPLATE.backToMenu("Admin" , "Removing").equals("1")) adminMenu();
         else remove();
@@ -123,7 +132,14 @@ public class Admin {
         System.out.println(Appearance.TEXT_ITALIC + "Type the Flight id you want to update :" + Appearance.RESET_STYLE);
 
         String flight = existsFlightId(input.next());
-        updateInProgress(ADMIN_ACTIONS.searchByFlightId(flight));
+        int process = 1;
+
+        var ticket = new Ticket();
+        if (ticket.searchFlightId(flight)){
+            System.out.println("This airline have been booked and you can not update it !");
+            process = 0;
+        }
+        if (process != 0) updateInProgress(ADMIN_ACTIONS.searchByFlightId(flight));
 
         if (TEMPLATE.backToMenu("Admin" , "Updating").equals("1")) adminMenu();
         else update();
