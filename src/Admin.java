@@ -51,12 +51,24 @@ public class Admin {
         System.out.println(Appearance.BLUE + "[ ADDING PANEL ]" + Appearance.RESET_COLOR);
         System.out.println(Appearance.TEXT_ITALIC + "Enter Flight id :");
         String flightId = input.next().toUpperCase();
+        while (true){
+            if (ADMIN_ACTIONS.searchByFlightId(flightId) != -1){
+                System.out.println("This flight id is existed! Try again with another flight id :");
+                flightId = input.next().toUpperCase();
+            } else break;
+        }
 
         System.out.println("Enter Origin :");
         String origin = TEMPLATE.templateStringStyle(input.next());
 
         System.out.println("Enter Destination :");
         String destination = TEMPLATE.templateStringStyle(input.next());
+        while (true){
+            if (origin.equals(destination)){
+                System.out.println("Origin and Destination cant be the same! Try again with another destination");
+                destination = TEMPLATE.templateStringStyle(input.next());
+            } else break;
+        }
 
         System.out.println("Date :");
         String date = TEMPLATE.dateTemplate();
