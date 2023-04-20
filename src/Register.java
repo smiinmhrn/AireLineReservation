@@ -1,20 +1,26 @@
-public class Register extends User {
+public class Register {
+    private final User user;
+
+    public Register(User user) {
+        this.user = user;
+    }
+
     public void addAdminAccount(Users users) {
-        addAccount(users);
+        user.addAccount(users);
     }
     public Users searchAdminName(String username) {
-        return searchUsername(username);
+        return user.searchUsername(username);
     }
     public boolean searchAdminPassword(String password , String username) {
-        return searchPassword(password , username);
+        return user.searchPassword(password , username);
     }
     public Users searchPassengerName(String username) {
-        return searchUsername(username);
+        return user.searchUsername(username);
     }
     public void addPassengerAccount(Users users) {
-        addAccount(users);
+        user.addAccount(users);
     }
     public boolean searchPassengerPassword(String password , String username) {
-        return searchPassword(password , username);
+        return user.searchPassword(password , username);
     }
 }

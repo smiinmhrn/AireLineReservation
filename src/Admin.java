@@ -4,10 +4,14 @@ public class Admin {
     Scanner input = new Scanner(System.in);
     private final Templates TEMPLATE;
     private final AdminActions ADMIN_ACTIONS;
-    public Admin(Templates TEMPLATE, AdminActions ADMIN_ACTIONS) {
+    private final NewingClasses newClasses;
+
+    public Admin(Templates TEMPLATE, AdminActions ADMIN_ACTIONS, NewingClasses newClasses) {
         this.TEMPLATE = TEMPLATE;
         this.ADMIN_ACTIONS = ADMIN_ACTIONS;
+        this.newClasses = newClasses;
     }
+
     // this function is for handling admin menu
     public void adminMenu() {
         System.out.println(Appearance.BLUE + "[ ADMIN MENU OPTIONS ]" + Appearance.RESET_COLOR);
@@ -36,7 +40,7 @@ public class Admin {
                     showingFlightSchedules();
                     break label;
                 case "0" :
-                    var mainMenu = new MainMenu(new Templates());
+                    var mainMenu = new MainMenu(new Templates(),newClasses);
                     mainMenu.mainMenu();
                     break label;
                 default :
@@ -98,8 +102,8 @@ public class Admin {
         String flightId = existsFlightId(input.next());
         int process = 1;
 
-        var ticket = new Ticket();
-        if (ticket.searchFlightId(flightId)){
+
+        if (newClasses.getTICKET().searchFlightId(flightId)){
             System.out.println("This airline have been booked and you can not remove it !");
             process = 0;
         }
@@ -134,8 +138,7 @@ public class Admin {
         String flight = existsFlightId(input.next());
         int process = 1;
 
-        var ticket = new Ticket();
-        if (ticket.searchFlightId(flight)){
+        if (newClasses.getTICKET().searchFlightId(flight)){
             System.out.println("This airline have been booked and you can not update it !");
             process = 0;
         }

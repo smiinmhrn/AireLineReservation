@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class User implements CanPassengerUser {
     // this class is responsible for every action related to users accounts
-    private static final List<Users> USERS_LIST = new ArrayList<>();
+    private final List<Users> USERS_LIST = new ArrayList<>();
     /**
      * @param name => searching this name in list
      * @return => and return index of address which having it and if it doesn't exist return -1

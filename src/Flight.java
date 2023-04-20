@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Flight implements CanAdminActions , CanPassengerActions {
     // this class is responsible for doing some actions in airline list
-    private static final List<Flights> FLIGHTS_LIST = new ArrayList<>();
+    private final List<Flights> FLIGHTS_LIST = new ArrayList<>();
     // this function is for adding new airline
     @Override
     public void addAirlines(Flights flights) { FLIGHTS_LIST.add(flights); }

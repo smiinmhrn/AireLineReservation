@@ -5,11 +5,15 @@ public class Passenger {
     private final String USERNAME;
     private final Templates TEMPLATE;
     private final PassengerActions passengerActions;
-    public Passenger(String username, Templates TEMPLATE, PassengerActions passengerActions) {
-        this.USERNAME = username;
+    private final NewingClasses newClasses;
+
+    public Passenger(String USERNAME, Templates TEMPLATE, PassengerActions passengerActions, NewingClasses newClasses) {
+        this.USERNAME = USERNAME;
         this.TEMPLATE = TEMPLATE;
         this.passengerActions = passengerActions;
+        this.newClasses = newClasses;
     }
+
     public void passengerMenu() {
 
         System.out.println(Appearance.BLUE + "[ PASSENGER MENU OPTIONS ]" + Appearance.RESET_COLOR);
@@ -46,7 +50,7 @@ public class Passenger {
                     addCharge(1);
                     break label;
                 case "0":
-                    var mainMenu = new MainMenu(new Templates());
+                    var mainMenu = new MainMenu(new Templates(),newClasses);
                     mainMenu.mainMenu();
                     break label;
                 default:
@@ -126,7 +130,7 @@ public class Passenger {
         System.out.println("Type the price should upper than :");
         int upper = Integer.parseInt(TEMPLATE.availableInput(input.next()));
 
-        if (!passengerActions.searchByPrice(lower,upper))
+        if (passengerActions.searchByPrice(lower,upper))
             System.out.println(Appearance.GREEN + "Search without results !" + Appearance.RESET_COLOR);
 
         if (TEMPLATE.backToMenu("Passenger" , "Searching").equals("1")) passengerMenu();

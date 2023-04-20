@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 public class Ticket {
-    private static final List<Tickets> TICKETS_LIST = new ArrayList<>();
+    private final List<Tickets> TICKETS_LIST = new ArrayList<>();
     public void buyNewTicket(Tickets tickets) {
         TICKETS_LIST.add(tickets);
     }
