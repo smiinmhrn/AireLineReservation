@@ -217,14 +217,14 @@ public class Passenger {
 
             if (nextStep == 1){
                 if(TEMPLATE.backToMenu("Passenger", "Showing ticket library").equals("1")) passengerMenu();
-                else addCharge(nextStep);
+                else bookedTickets(nextStep);
             }
             return true;
         } else System.out.println("You have not purchased any tickets yet !" + Appearance.RESET_STYLE);
 
         if (nextStep == 1){
             if(TEMPLATE.backToMenu("Passenger", "Showing ticket library").equals("1")) passengerMenu();
-            else addCharge(nextStep);
+            else bookedTickets(nextStep);
         }
         return false;
     }

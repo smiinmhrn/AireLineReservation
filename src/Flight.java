@@ -14,7 +14,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     // this function is for searching flight id and return the index of its address and if it dost exist return -1
     @Override
     public int searchByFlightId(String shouldSearch) {
-        for (int i = 0; i < FLIGHTS_LIST.size(); i++) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
             if (FLIGHTS_LIST.get(i).getFlightId().equals(shouldSearch.toUpperCase())) return i;
         } return -1;
     }
@@ -23,7 +23,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     @Override
     public int searchByOrigin(String shouldSearch) {
         int result = 0;
-        for (int i = 0; i < FLIGHTS_LIST.size(); i++) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
             if (FLIGHTS_LIST.get(i).getOrigin().equals(shouldSearch.substring(0,1).toUpperCase() +
                     shouldSearch.substring(1).toLowerCase())){
                 printSingleAirLine(i);
@@ -34,7 +34,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     @Override
     public int searchByDestination(String shouldSearch) {
         int result = 0;
-        for (int i = 0; i < FLIGHTS_LIST.size(); i++) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
             if (FLIGHTS_LIST.get(i).getDestination().equals(shouldSearch.substring(0,1).toUpperCase() +
                     shouldSearch.substring(1).toLowerCase())) {
                 printSingleAirLine(i);
@@ -45,7 +45,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     @Override
     public int searchByDate(String shouldSearch) {
         int result = 0;
-        for (int i = 0; i < FLIGHTS_LIST.size(); i++) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
             if (FLIGHTS_LIST.get(i).getDate().equals(shouldSearch)) {
                 printSingleAirLine(i);
                 result = 1;
@@ -55,7 +55,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     @Override
     public int searchByTime(String shouldSearch) {
         int result = 0;
-        for (int i = 0; i < FLIGHTS_LIST.size(); i++) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
             if (FLIGHTS_LIST.get(i).getTime().equals(shouldSearch)) {
                 printSingleAirLine(i);
                 result = 1;
@@ -65,9 +65,9 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     @Override
     public int searchByPrice(int lower, int upper) {
         int result = 0;
-        for (int i = 7; i < FLIGHTS_LIST.size(); i++) {
-            if (upper<=Integer.parseInt(FLIGHTS_LIST.get(i).getPrice()) &&
-                    Integer.parseInt(FLIGHTS_LIST.get(i).getPrice()) <= lower) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
+            if (upper<=Long.parseLong(FLIGHTS_LIST.get(i).getPrice()) &&
+                    Long.parseLong(FLIGHTS_LIST.get(i).getPrice()) <= lower) {
                 printSingleAirLine(i);
                 result = 1;
             }
@@ -76,7 +76,7 @@ public class Flight implements CanAdminActions , CanPassengerActions {
     @Override
     public int searchBySeats(String shouldSearch) {
         int result = 0;
-        for (int i = 0; i < FLIGHTS_LIST.size(); i++) {
+        for (int i = 1; i < FLIGHTS_LIST.size(); i++) {
             if (FLIGHTS_LIST.get(i).getSeats().equals(shouldSearch)) {
                 printSingleAirLine(i);
                 result = 1;

@@ -71,7 +71,7 @@ public class Admin {
         while (true) {
             if (origin.equals(destination)) {
                 System.out.println(Appearance.RED +
-                        "Origin and Destination cant be the same! Try again with another destination"
+                        "Origin and Destination cant be the same! Try again with another destination :"
                         + Appearance.RESET_COLOR);
                 destination = TEMPLATE.templateStringStyle(input.next());
             } else break;
